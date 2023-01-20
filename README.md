@@ -4,7 +4,7 @@ For our project, we decided to develop an application that allows users to share
 ## Group Members
 | Member Name   | Position      |
 | ------------- | ------------- |
-| Content Cell  | Front End     |
-| Content Cell  | Front End     |
-| Content Cell  | Back End      |
-| Content Cell  | Back End      |
+| Ian Blasko    | Front End     |
+| Jason Liang   | Front End     |
+| Elsa Osmani   | Back End      |
+| Kurtis Gnapp  | Back End      |
