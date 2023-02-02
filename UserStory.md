@@ -3,8 +3,8 @@
 2.  As an end user, I want to be able to select from the following social platforms to display them on my page:
  - Facebook
  - LinkedIn
-
  - Instagram
  - Snapchat
-   to allow me to connect with as many people as possible across all social platforms.
  - Testing
+ ...to allow me to connect with as many people as possible across all social platforms.
+ 3.
