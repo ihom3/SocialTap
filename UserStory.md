@@ -18,3 +18,4 @@
  
 3. As an end user, I want to be able to upload my own profile picture and bio to allow a more personal connection when networking with others.
 4. As an end user, I was to be able to login to the platform from a choice of authentication methods to allow me to choose the option that works best with my pre-existing authentication patterns.
+5. As a user, I want to be able to share my Linkedin with others and network my information for possible employment opportunities.
