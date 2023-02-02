@@ -5,7 +5,14 @@
  - LinkedIn
  - Instagram
  - Snapchat
- - Testing
+ - Resume
+ - Personal Website
+ - Cover Letter
+ - TikTok
+ - Twitter
+ - YouTube
+ - Phone
+ - Email
  
  to allow me to connect with as many people as possible across all social platforms.
- 3.
+ 3. As an end user, I want to be able to upload my own profile picture and bio to allow a more personal connection when networking with others.
