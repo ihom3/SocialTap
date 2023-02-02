@@ -6,5 +6,6 @@
  - Instagram
  - Snapchat
  - Testing
- ...to allow me to connect with as many people as possible across all social platforms.
+ 
+ to allow me to connect with as many people as possible across all social platforms.
  3.
