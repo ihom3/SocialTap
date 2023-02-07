@@ -1,12 +1,12 @@
 ## Sprint 1
-/* this part is to be removed before the dealine; it is left here for orientation
+---this part is to be removed before the dealine; it is left here for orientation
 Instructions:
 In a file titled "Sprint1.md", add the following details:
 User stories
 What issues your team planned to address
 Which ones were successfully completed
 Which ones didn't and why?
-*/
+---
 
 ### User stories
 
