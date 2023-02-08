@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faFacebook, faInstagram, faLinkedin, faSnapchat, } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faInstagram, faLinkedin, faSnapchat, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 import { Social } from 'src/app/models/Social';
 
@@ -22,6 +22,8 @@ export class SocialTileComponent {
         return faLinkedin;
       case "instagram":
         return faInstagram;
+      case "twitter":
+        return faTwitter;
       default:
         return faTimesCircle;
     }
@@ -40,6 +42,9 @@ export class SocialTileComponent {
         break;
       case "instagram":
         main += "instagram.com/";
+        break;
+      case "twitter":
+        main += "twitter.com/";
         break;
       default:
         return;

@@ -20,6 +20,11 @@ export const SOCIALS: Social[] = [{
         name: "instagram",
         url: "4",
         active: true
+    },
+    {
+        name: "twitter",
+        url: "5",
+        active: true
     }
 ]
 export const HEADER: Header = {
