@@ -1,5 +1,8 @@
 ## Sprint 1
 
+[Frontend Video](https://drive.google.com/file/d/16ZoA2nvw8zq2sMAIOAaUOd2mC9e30vuj/view)
+[Backend Video](https://drive.google.com/file/d/1Aw_Rv_olsLK7I9o2Miskv2kXd09y0iod/view)
+
 ### User stories
 
 1.  As someone looking for a job, I want to be able to quickly and easily share my Linkedin, Resume, Personal Website, Cover Letter, Phone, Email, etc. with others in order to advertise myself as effectively as possible.
