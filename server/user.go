@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"os"
+	
 	"github.com/gorilla/mux"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -17,7 +19,11 @@ var DB *gorm.DB
 var err error
 
 // database url (whoever is testing it, don't forget to change this to your local connection)
-const DNS = "root:feynman65@tcp(127.0.0.1:3306)/social_tap?charset=utf8mb4&parseTime=True&loc=Local"
+//const DNS = "root:<password>@tcp(127.0.0.1:3306)/social_tap?charset=utf8mb4&parseTime=True&loc=Local"
+
+//to protect the password we generate an environmental variable
+var pswd = os.Getenv("MYSQL_PASSWORD")
+var DNS = "root:" + pswd + "@tcp(127.0.0.1:3306)/social_tap?charset=utf8mb4&parseTime=True&loc=Local"
 
 // creating a struct(class) to store the different data types in order for us to be able to save these data in the databse
 type User struct {
