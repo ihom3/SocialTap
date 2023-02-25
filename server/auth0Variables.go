@@ -16,7 +16,7 @@ var (
 
 func setAuth0Variables() {
 	os.Setenv("AUTH0_API_IDENTIFIER", "https://my-golang-api")
-	os.Setenv("AUTH0_DOMAIN", "dev-2ydz54dlz70tnmw4.auth0.com")
+	os.Setenv("AUTH0_DOMAIN", "dev-2ydz54dlz70tnmw4.us.auth0.com")
 	audience = os.Getenv("AUTH0_API_IDENTIFIER")
 	domain = os.Getenv("AUTH0_DOMAIN")
 }
