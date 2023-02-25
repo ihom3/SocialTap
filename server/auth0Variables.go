@@ -1,7 +1,6 @@
 package main
 
 import (
-	//"encoding/json"
 	"fmt"
 	"net/http"
 	"os"
@@ -16,6 +15,8 @@ var (
 )
 
 func setAuth0Variables() {
+	os.Setenv("AUTH0_API_IDENTIFIER", "https://my-golang-api")
+	os.Setenv("AUTH0_DOMAIN", "dev-2ydz54dlz70tnmw4.auth0.com")
 	audience = os.Getenv("AUTH0_API_IDENTIFIER")
 	domain = os.Getenv("AUTH0_DOMAIN")
 }
@@ -36,7 +37,6 @@ func authRequired(h http.Handler) http.Handler {
 			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 			return
 		}
-
 		h.ServeHTTP(w, r)
 	})
 }
