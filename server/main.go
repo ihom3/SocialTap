@@ -29,15 +29,6 @@ func initRouter() {
 	r.HandleFunc("/users", CreateUser).Methods("POST")     // post because we are putting information in
 	r.HandleFunc("/users/{id}", UpdateUser).Methods("PUT") // put because we are changing information
 	r.HandleFunc("/users/{id}", DeleteUser).Methods("DELETE")
-	
-	r.HandleFunc("/update-profile-picture", UpdateProfilePicture).Methods("POST")
-	
-	//needed to implement
-	//r.HandleFunc("/home", HomeHandler)
-	//r.HandleFunc("/{id}", LoginHandler)
-	//r.HandleFunc("/dashboard", LoginHandler)
-	//r.HandleFunc("/update-profile", LoginHandler)
-	//r.HandleFunc("/udate-socials", LoginHandler)
 
 	//ListenAndServe(address, handler http.Handler) listens on the TCP network address
 	//then calls serve with handler to handle requests on incoming connections.
