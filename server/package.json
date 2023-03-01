@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Commands to auto compile the golang server",
+  "main": "index.js",
+  "scripts": {
+    "watch": "CompileDaemon.exe --command=./SocialTap.exe"
+  },
+  "author": "",
+  "license": "ISC"
+}

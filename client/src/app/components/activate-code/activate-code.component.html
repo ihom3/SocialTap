@@ -1,0 +1,13 @@
+<app-card title="Activate Code">
+    <div content>
+        <form>
+            <mat-form-field>
+                <mat-label>Code</mat-label>
+                <input matInput [(ngModel)]="code"[ngModelOptions]="{standalone: true}" maxlength="4" >
+            </mat-form-field>
+
+        </form>
+    </div>
+    <div action>
+        <button mat-raised-button color="primary"  disabled="{{code == '' || code.length != 4}}">Activate</button></div>
+</app-card>
