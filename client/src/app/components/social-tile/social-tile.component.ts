@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faFacebook, faInstagram, faLinkedin, faSnapchat, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
+import { faFacebook, faInstagram, faLinkedin, faSnapchat, faTwitter, faTiktok, faYoutube, faDiscord, faTwitch, faGithub} from '@fortawesome/free-brands-svg-icons';
+import { faFilePdf, faTimesCircle, faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faD } from '@fortawesome/free-solid-svg-icons';
 import { Social } from 'src/app/models/Social';
 
 @Component({
@@ -24,6 +25,20 @@ export class SocialTileComponent {
         return faInstagram;
       case "twitter":
         return faTwitter;
+      case "tiktok":
+        return faTiktok;
+      case "youtube":
+        return faYoutube;
+      case "discord":
+        return faDiscord;
+      case "twitch":
+        return faTwitch;
+      case "github":
+        return faGithub;
+      case "resume":
+        return faFilePdf;
+      case "email":
+        return faEnvelope;
       default:
         return faTimesCircle;
     }
@@ -46,6 +61,28 @@ export class SocialTileComponent {
       case "twitter":
         main += "twitter.com/";
         break;
+      case "tiktok":
+        main += "tiktok.com/";
+        break;
+      case "youtube":
+        main += "youtube.com/";
+        break;
+      case "discord":
+        main += "discord.com/";
+        break;
+      case "twitch":
+        main += "twitch.com/";
+        break;
+      case "github":
+        main += "github.com/";
+        break;
+      case "resume":
+        //main = "../../../../assets/resume.pdf"
+        main = "/assets/resume.pdf";
+        break;
+      case "email":
+        main += "mailto:";
+        break;
       default:
         return;
     }
@@ -53,3 +90,5 @@ export class SocialTileComponent {
     window.location.href = main; 
   }
 }
+
+
