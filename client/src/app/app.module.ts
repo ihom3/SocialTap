@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { IdDiscoveryComponent } from './components/id-discovery/id-discovery.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomePageComponent,
     PageNotFoundComponent,
     IdDiscoveryComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    PageHeaderComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

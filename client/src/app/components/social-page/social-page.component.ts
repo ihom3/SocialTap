@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Header } from 'src/app/models/Header';
-import { HEADER, SOCIALS } from 'src/app/models/mockData';
 import { Social } from 'src/app/models/Social';
+import { HEADER, SOCIALS } from 'src/app/models/mockData';
+
 
 @Component({
   selector: 'social-page',

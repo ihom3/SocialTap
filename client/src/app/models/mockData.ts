@@ -25,6 +25,41 @@ export const SOCIALS: Social[] = [{
         name: "twitter",
         url: "5",
         active: true
+    },
+    {
+        name: "tiktok",
+        url: "6",
+        active: true
+    },
+    {
+        name: "youtube",
+        url: "7",
+        active: true
+    },
+    {
+        name: "discord",
+        url: "8",
+        active: true
+    },
+    {
+        name: "twitch",
+        url: "9",
+        active: true
+    },
+    {
+        name: "github",
+        url: "10",
+        active: true
+    },
+    {
+        name: "resume",
+        url: "",
+        active: true
+    },
+    {
+        name: "email",
+        url: "test@gmail.com",
+        active: true
     }
 ]
 export const HEADER: Header = {
