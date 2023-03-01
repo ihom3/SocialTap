@@ -109,15 +109,6 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// just testing testing
-func HandlerTesting(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		w.WriteHeader(http.StatusMethodNotAllowed)
-		return
-	}
-	w.WriteHeader(http.StatusOK)
-}
-
 // getting one user
 func GetUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -238,16 +229,6 @@ func UpdateProfilePicture(w http.ResponseWriter, r *http.Request) {
 	defer file.Close()
 
 	fmt.Println("File name: ", handler.Filename)
-	// fmt.Println("File name: ")
-
-	// f, err := os.OpenFile("./profile-pictures/"+handler.Filename, os.O_WRONLY|os.O_CREATE, 0666)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	// defer f.Close()
-	// io.Copy(f, file)
-
 	// upload picture
 	// to store it in the directory temporary:
 	tempFile, err2 := ioutil.TempFile("profile-pictures", "user-*.jpg")
@@ -269,107 +250,6 @@ func findUserByCode(code string) (User, error) {
 	return foundUser, err
 }
 
-func isPrimeHandler(w http.ResponseWriter, r *http.Request) {
-	number := r.URL.Query().Get("number")
-	n, err := strconv.Atoi(number)
-	if err != nil {
-		http.Error(w, "invalid number", http.StatusBadRequest)
-		return
-	}
 
-	fmt.Fprint(w, strconv.FormatBool(isPrime(int64(n))))
-}
 
-func isPrime(n int64) bool {
-	return big.NewInt(n).ProbablyPrime(0)
-}
 
-func setupMux(path string) *http.ServeMux {
-	mux := http.NewServeMux()
-	mux.HandleFunc(path, isPrimeHandler)
-	return mux
-}
-
-// func notFoundHandler(w http.ResponseWriter, r *http.Request) {
-// 	writeRawBody(w, r, notFoundResponse, http.StatusNotFound)
-// }
-
-/*
-func TestGetUser(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(GetUser))
-	resp, err := http.Get(server.URL)
-	if err != nil {
-		t.Error(err)
-	}
-	defer resp.Body.Close()
-
-	expected := &User{
-		UserName:  "jondoe1",
-		FirstName: "Jon",
-		LastName:  "Doe",
-	}
-	if err != nil {
-		t.Error(err)
-	}
-	//b, err := ioutil.ReadAll(resp.Body)
-	if !reflect.DeepEqual(resp, expected) {
-		t.Errorf("FAILED: expected %v, got %v\n", expected, resp)
-	}
-}
-*/
-
-/*
-type Tests struct {
-	name          string
-	server        *httptest.Server //mock server
-	response      *User
-	expectedError error
-}
-
-func TestGetUser(t *testing.T) {
-
-	tests := []Tests{
-		{
-			name: "get-user-test",
-			server: httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-				w.WriteHeader(http.StatusOK)
-				w.Write([]byte(`{"username": "jondoe1", "firstname":"Jon", "lastname":"Doe"} `))
-			})),
-			response: &User{
-				UserName:  "jondoe1",
-				FirstName: "Jon",
-				LastName:  "Doe",
-			},
-			expectedError: nil,
-		},
-	}
-
-	for _, test := range tests {
-
-		t.Run(test.name, func(t *testing.T) {
-			defer test.server.Close()
-			resp, err := http.Get(test.server.URL)
-			if !reflect.DeepEqual(resp, test.response) {
-				t.Errorf("FAILED: expected %v, got %v\n", test.response, resp)
-			}
-			if !errors.Is(err, test.expectedError) {
-				t.Errorf("Expected error FAILED: expected %v got %v\n", test.expectedError, err)
-			}
-		})
-	}
-}
-*/
-
-/*
-{
-    "username" : "jondoe1",
-    "firstname": "Jon",
-    "lastname" : "Doe"
-}
-Response:
-{
-    "username": "jondoe1",
-    "FirstName": "Jon",
-    "LastName": "Doe"
-}
-*/
