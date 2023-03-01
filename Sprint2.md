@@ -12,6 +12,7 @@ Added the following social media platforms:
 7. G
 
 - Implemented logging in/logging out using apple, google, and facebook through Auth0
+!()[https://i.imgur.com/Xl2Ihyj.png]
 - Implemented skeleton of dashboard component that retrieves user object from Auth0 and their 
 - Implemented authenticated route /dashboard that will redirect the user to the login page if they are not authenticated
 - Implemented header component
