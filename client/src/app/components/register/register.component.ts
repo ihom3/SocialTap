@@ -14,6 +14,5 @@ export class RegisterComponent {
     if(this.id == "") {
       this.router.navigate(["error"]);
     }
-    console.log(this.id)
   }
 }

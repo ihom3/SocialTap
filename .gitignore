@@ -40,3 +40,6 @@
 # System files
 .DS_Store
 Thumbs.db
+
+#client production environment variables
+/client/src/environments/environment.development.ts
