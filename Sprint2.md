@@ -1,19 +1,16 @@
-## Sprint2
-### Frontend
+# Sprint2
+## Frontend
 
+### Work Completed
 
-## Work Completed
+### Unit Tests
 
+### Cypress Tests
 
-## Unit Tests
+## Backend
 
-## Cypress Tests
+### Work Completed
 
+### Unit Tests
 
-### Backend
-
-## Work Completed
-
-## Unit Tests
-
-## Backend API Documentation
+### Backend API Documentation
