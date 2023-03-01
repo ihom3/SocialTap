@@ -2,14 +2,14 @@
 ## Frontend
 
 ### Work Completed
-Added the following social media platforms:
-1. A
-2. B
-3. C
-4. D
-5. E
-6. F
-7. G
+Added the following tiles:
+1. Tiktok
+2. Youtube
+3. Discord
+4. Twitch
+5. Reddit
+6. Resume
+7. E-mail
 
 - Implemented logging in/logging out using apple, google, and facebook through Auth0
 - Implemented skeleton of dashboard component that retrieves user object from Auth0 and their 
