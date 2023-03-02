@@ -22,7 +22,7 @@ import (
 // method to initialize the router
 func initRouter() {
 	r := mux.NewRouter()
-	//HandleFunc registers the handler function for the given pattern in the server
+	r.Use(authRequired)	//HandleFunc registers the handler function for the given pattern in the server
 	//inside the handle function we need to provide the route information = path
 	//then we need to provide the function we need to call when we see /users
 	r.HandleFunc("/users", GetUsers).Methods("GET")
