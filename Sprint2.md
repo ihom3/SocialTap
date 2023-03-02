@@ -65,6 +65,25 @@ Added the following tiles to the user profile page:
 
 ### Unit Tests
 
+- TestGetUsersStatusCode
+        It checks the get users function status code and returns true if the code is OK, else it fails.
+- TestUpdateUserStatusCode
+        It checks the get users function status code and returns true if the code is OK, else it fails.
+- TestGetUserByCode
+        It creates a user and puts in in the test database through the mock server. Then it checks that that is 
+        the user which will be returned in the body of the request.
+- TestCreateUser
+        It creates a user and puts in in the test database. It then encodes the user as JSON and make a POST request
+        to the handler. It checks the status code and then queries the database to check if the user was created.
+- TestInitialMigration
+        It connects to the test database. Then performs the initial database migration and checks if the users, 
+        socials, and unregistered tables were created.
+- TestDeleteUser
+        It sends a delete request through the mock server and first checks the status code and then reads the response
+        from the body to see if it matches the expected value.
+- TestUpdateProfilePicture
+        It adds a test picture to the test directory and checks to see if it is saved.
+        
 ### Backend API Documentation
 [Database Structure, Backend Endpoints & Registration Flow](https://ianblasko.notion.site/Software-Engineering-20eed26e5943404e8d357d40bb23a8e1)
 
