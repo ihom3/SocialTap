@@ -70,5 +70,12 @@ Added the following tiles to the user profile page:
 ### Backend API Documentation
 [Database Structure, Backend Endpoints & Registration Flow](https://ianblasko.notion.site/Software-Engineering-20eed26e5943404e8d357d40bb23a8e1)
 
-- "/users" is a GET METHOD that retrieves 
+- "/users" is a GET METHOD that retrieves our USER Struct Data to request all users stored in database.
+- "/users/{id}" is a GET METHOD that retrieves our USER Struct Data to request a specific user with the corresponding ID.
+- "/users" is a POST METHOD that allows us to store a USER Struct user into our database.
+- "/users/{id}" is a PUT METHOD that allows us to update a user inside of our database, such as email, name, etc...
+- "/users/{id}" is a DELETE METHOD that allows us to remove a specific user from inside our database
+- "/users/{id}/instagram" is a GET METHOD that allows us to retrieve a users social media account, in this case specifically Instagram.
+- "/users/code" is a POST METHOD that allows a user to add a user social to the user specificed.
+- "/update-profile-picture" is a POST METHOD that allows for a user to change their profile picture and store it inside our database.
 
