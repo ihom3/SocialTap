@@ -23,7 +23,16 @@ Added the following tiles to the user profile page:
 ![](https://i.imgur.com/hyEitJm.png)
 
 ### Unit Tests
+![](https://i.imgur.com/ioEVEyT.png)
+1. Test the creation of the SocialProviderService
+2. Test the creation of the RegisterComponent
+3. Test the creation of the SocialTileComponent
+4. Test the icon switch statement for the SocialTileComponent
+5. Test the creation of the ErrorPageComponent
+6. Test that the AppCardComponent is created and initialized with a blank title
+7. Test that the general AppComponent is created and functioning
 
+Some of our angular unit tests are failing because of Injection errors in our test files for individual components. We are going to look into resolving these errors in our next sprint. 
 ### Cypress Tests
 - "Home Page Opens": tests whether the home page loads properly 
 - "Return Home Button Works": tests whether clicking the "Return home" button on the error screen takes the user back to the home page 
