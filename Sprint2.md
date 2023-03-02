@@ -25,6 +25,9 @@ Added the following tiles to the user profile page:
 ### Unit Tests
 
 ### Cypress Tests
+- "Home Page Opens": tests whether the home page loads properly 
+- "Return Home Button Works": tests whether clicking the "Return home" button on the error screen takes the user back to the home page 
+![image](https://user-images.githubusercontent.com/67469516/222322452-f51eb3db-7249-4533-b4b3-0441f2172720.png)
 
 ## Backend
 
