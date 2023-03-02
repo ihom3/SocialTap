@@ -29,6 +29,15 @@ Added the following social media platforms:
 ## Backend
 
 ### Work Completed
+- Implemented Auth0 on the back-end to retrieve token from the front-end 
+- Denies user access if Bearer token is not authenticated, else user permissions are enabled and can be accessed
+## Auth0 Implementation / Back-End Images
+- Curl POST request to generate an Auth0 token.
+- <img width="1250" alt="Screen Shot 2023-03-01 at 8 03 00 PM" src="https://user-images.githubusercontent.com/73502423/222304370-2add37c7-e50e-4233-93c5-9eee180371c1.png">
+- If the Bearer token is valid and accepted, GET USERS is applied and executed
+- <img width="1009" alt="Screen Shot 2023-03-01 at 8 05 00 PM" src="https://user-images.githubusercontent.com/73502423/222304517-42d840c7-fbb1-4d55-9832-678f5cdab3fd.png">
+- If the Bearer token is invalid, "Bad Request" is printed and GET USERS is not executed.
+- <img width="1072" alt="Screen Shot 2023-03-01 at 8 05 10 PM" src="https://user-images.githubusercontent.com/73502423/222304642-848ef0e3-397a-4f81-99db-a9f20ed5695a.png">
 
 ### Unit Tests
 
