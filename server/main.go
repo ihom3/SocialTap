@@ -52,6 +52,7 @@ func initRouter() {
 
 func main() {
 	//calling the router
+	setAuth0Variables()	
 	InitialMigration()
 	initRouter()
 
