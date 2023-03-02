@@ -213,3 +213,59 @@ func TestDeleteUser(t *testing.T) {
 	}
 	fmt.Println()
 }
+
+// testing the picture upload
+
+func TestUpdateProfilePicture(t *testing.T) {
+	// Create a new HTTP request with a test file
+	file, err := os.Open("test-files/apple-test.jpg")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer file.Close()
+
+	body := &bytes.Buffer{}
+	writer := multipart.NewWriter(body)
+	part, err := writer.CreateFormFile("profile_picture", filepath.Base(file.Name()))
+	if err != nil {
+		t.Fatal(err)
+	}
+	io.Copy(part, file)
+	writer.Close()
+
+	req, err := http.NewRequest("POST", "/update_profile_picture", body)
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("Content-Type", writer.FormDataContentType())
+
+	rr := httptest.NewRecorder()
+
+	// Call the handler function
+	UpdateProfilePicture(rr, req)
+
+	// Check the response status code
+	if status := rr.Code; status != http.StatusOK {
+		t.Errorf("handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+
+	// Check that the file was uploaded correctly
+	_, err = os.Stat("profile_pictures")
+	if os.IsNotExist(err) {
+		t.Errorf("directory profile_pictures not created")
+	}
+
+	files, err := ioutil.ReadDir("profile_pictures")
+	if err != nil {
+		t.Errorf("error reading directory: %v", err)
+	}
+
+	if len(files) != 1 {
+		t.Errorf("expected 1 file in directory, got %v", len(files))
+	}
+
+	// Clean up temporary files and directories
+	os.RemoveAll("profile_pictures")
+}
+
