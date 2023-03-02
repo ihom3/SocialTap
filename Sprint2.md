@@ -19,7 +19,8 @@ Added the following social media platforms:
 - Implemented header component
 ![](https://i.imgur.com/J85rHYz.png)
 - Implemented custom user page that will fetch data from the backend database and use this information to render the user's social page based on the code provided to the URL. 
-
+- Implemented page to register new device codes
+![](https://i.imgur.com/hyEitJm.png)
 
 ### Unit Tests
 
