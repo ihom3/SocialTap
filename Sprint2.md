@@ -69,3 +69,16 @@ Added the following tiles to the user profile page:
 
 ### Backend API Documentation
 [Database Structure, Backend Endpoints & Registration Flow](https://ianblasko.notion.site/Software-Engineering-20eed26e5943404e8d357d40bb23a8e1)
+
+API URL HANDLER FUNCTIONS:
+
+"/users" -> GET METHOD 
+    - Retrieves Data Users inside of mySQL
+    - Data Params include: 
+"/users/{id} -> GET METHOD
+"/users" -> POST METHOD
+"/users/{id}" -> PUT METHOD
+"/users/{id}" -> DELETE METHOD
+"/users/{id}/instagram" -> GET METHOD
+"/users/code" -> POST METHOD
+
