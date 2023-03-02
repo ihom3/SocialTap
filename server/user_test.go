@@ -153,3 +153,63 @@ func TestCreateUser(t *testing.T) {
 		t.Errorf("Expected 1 row to be affected, but got %d", count)
 	}
 }
+
+// testing the proper migration of the tables into the database
+func TestInitialMigration(t *testing.T) {
+	// Connect to the test database
+	DB, err = gorm.Open(mysql.Open(DNS), &gorm.Config{})
+	if err != nil {
+		fmt.Println(err.Error())
+		panic("	 Cannot connect to DB")
+	}
+
+	// Perform the initial database migration
+	InitialMigration()
+
+	// Check if the User table was created
+	if !DB.Migrator().HasTable(&User{}) {
+		t.Errorf("	User table was not created")
+	}
+
+	// Check if the UnregisteredCodes table was created
+	if !DB.Migrator().HasTable(&UnregisteredCodes{}) {
+		t.Errorf("	UnregisteredCodes table was not created")
+	}
+
+	// Check if the Socials table was created
+	if !DB.Migrator().HasTable(&Socials{}) {
+		t.Errorf("	Socials table was not created")
+	}
+	fmt.Println("	Everything was properly migrated.")
+	fmt.Println()
+}
+
+func TestDeleteUser(t *testing.T) {
+	req, err := http.NewRequest("DELETE", "/users/1", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	rr := httptest.NewRecorder()
+
+	router := mux.NewRouter()
+	router.HandleFunc("/users/{id}", DeleteUser)
+
+	router.ServeHTTP(rr, req)
+
+	if status := rr.Code; status != http.StatusOK {
+		t.Errorf("	Handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+
+	// Assert response body
+	result := strings.TrimSpace(rr.Body.String())
+	expected := "\"The user is deleted successfully.\""
+	if result != expected {
+		t.Errorf("	Handler returned unexpected body: got %v want %v",
+			rr.Body.String(), expected)
+	} else {
+		fmt.Println("	The user got deleted successfully.")
+	}
+	fmt.Println()
+}
