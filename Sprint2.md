@@ -84,6 +84,9 @@ Added the following tiles to the user profile page:
 - TestUpdateProfilePicture
         It adds a test picture to the test directory and checks to see if it is saved.
         
+ <img width="174" alt="image" src="https://user-images.githubusercontent.com/90483046/222325961-9d199497-7fe2-4025-8e51-62671450b457.png">
+The image shows the tests passing.
+        
 ### Backend API Documentation
 [Database Structure, Backend Endpoints & Registration Flow](https://ianblasko.notion.site/Software-Engineering-20eed26e5943404e8d357d40bb23a8e1)
 
