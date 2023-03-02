@@ -47,12 +47,7 @@ Added the following tiles to the user profile page:
     with it that links it to the users table with a "has a" relationship. It contains the social objects like instagram, facebook, snapchat etc. Those objects
     have each a name, status(displayed or not), and a url associated with it. The unregistered codes of the stickers are stored in the unregistered table. We
     also explored the functionality of the ParseMultipartForm function in go by adding a function to handle upload picture requests.
-    Moreover, the database design is finalized. We have three tables total: users, social lists, and unregistered codes. The users table
-    contains the user email, firstname and lastname, the sticker code, a bio, their profile picture path, and the socials' list. The social
-    list table has a key associated with it that links it to the users table with a "has a" relationship. It contains the social objects 
-    like instagram, facebook, snapchat etc. Those objects have each a name, status(displayed or not), and a url associated with it. The 
-    unregistered codes of the stickers are stored in the unregistered table. We also explored the functionality of the ParseMultipartForm 
-    function in go by adding a function to handle upload picture requests.
+  
 
 
 - Implemented Auth0 on the back-end to retrieve token from the front-end 
