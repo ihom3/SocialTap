@@ -70,5 +70,5 @@ Added the following tiles to the user profile page:
 ### Backend API Documentation
 [Database Structure, Backend Endpoints & Registration Flow](https://ianblasko.notion.site/Software-Engineering-20eed26e5943404e8d357d40bb23a8e1)
 
-
+- "/users" is a GET METHOD that retrieves 
 
