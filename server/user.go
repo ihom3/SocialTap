@@ -72,6 +72,46 @@ func InitialMigration() {
 
 //defining the handler functions
 
+// the /{id} route
+func IDRoute(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	var unregistered UnregisteredCodes
+	//first, query the unregistered codes table
+	unregisteredCheck := DB.First(&unregistered, "sticker_code = ?", params["id"])
+	//if it's not in the unregistered table, query the registered users table in the database
+	if unregisteredCheck.Error != nil {
+		var registered User
+		registeredCheck := DB.First(&registered, "sticker_code = ?", params["sticker_code"])
+		if registeredCheck.Error != nil { // if code doesn't exist
+			json.NewEncoder(w).Encode("User Not Found")
+		} else { // if the code exists
+			json.NewEncoder(w).Encode(registered)
+		}
+	} else { // if the code is in the unregistered table
+		json.NewEncoder(w).Encode(unregistered)
+	}
+}
+
+func Dashboard(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	code := params["sticker_code"]
+	var registered User
+	registeredCheck := DB.First(&registered, "sticker_code = ?", code)
+	if registeredCheck.Error != nil { // if user doesn't exist
+		//the user just created their account
+		//first, check if it's a valid code in the unregistered table
+		var unregistered UnregisteredCodes
+		unregisteredCheck := DB.First(&unregistered, "sticker_code = ?", code)
+		if unregisteredCheck.Error != nil {
+			json.NewEncoder(w).Encode("Invalid Request")
+		} else {
+			CreateUser(w, r)
+		}
+	} else { // if user exists
+		json.NewEncoder(w).Encode(registered)
+	}
+}
+
 // getting all users
 func GetUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -173,7 +213,7 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func UpdateProfilePicture(w http.ResponseWriter, r *http.Request) {
-
+	params := mux.Vars(r)
 	r.ParseMultipartForm(10 * 1024 * 1024) // Limit 10 MB
 
 	file, handler, err := r.FormFile("profile_picture")
@@ -191,7 +231,7 @@ func UpdateProfilePicture(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("File name: ", handler.Filename)
 	// upload picture
 	// to store it in the directory temporary:
-	tempFile, err2 := ioutil.TempFile("profile-pictures", "user-*.jpg")
+	tempFile, err2 := ioutil.TempFile("profile-pictures", "user-id-" + params["id"] + ".jpg")
 	if err2 != nil {
 		fmt.Println(err2)
 	}
