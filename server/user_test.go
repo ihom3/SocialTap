@@ -298,3 +298,63 @@ func TestDeleteCode(t *testing.T) {
 	fmt.Println()
 }
 
+func TestAddCode(t *testing.T) {
+	// create a new HTTP request with a valid sticker code
+	reqBody := `{"sticker_code": "ABC123"}`
+	req, err := http.NewRequest("POST", "/unregistered", strings.NewReader(reqBody))
+	if err != nil {
+		t.Fatalf("Failed to create request: %v", err)
+	}
+
+	// create a response recorder to capture the response
+	rr := httptest.NewRecorder()
+
+	// call the Dashboard handler function with the request and response recorder
+	handler := http.HandlerFunc(AddCode)
+	handler.ServeHTTP(rr, req)
+
+	// check the HTTP method of the request
+	if req.Method != http.MethodPost {
+		t.Errorf("AddCode was not called with the correct HTTP method: got %v, want %v", req.Method, http.MethodPost)
+	}
+}
+
+func TestDashboard(t *testing.T) {
+	// create a new HTTP request with a valid sticker code
+	req, err := http.NewRequest("GET", "/dashboard/testcode5", nil)
+	if err != nil {
+		t.Fatalf("Failed to create request: %v", err)
+	}
+
+	// create a response recorder to capture the response
+	rr := httptest.NewRecorder()
+
+	// call the Dashboard handler function with the request and response recorder
+	handler := http.HandlerFunc(Dashboard)
+	handler.ServeHTTP(rr, req)
+
+	// check the HTTP method of the request
+	if req.Method != http.MethodGet {
+		t.Errorf("Dashboard was not called with the correct HTTP method: got %v, want %v", req.Method, http.MethodGet)
+	}
+}
+
+func TestIDRoute(t *testing.T) {
+	// create a new HTTP request with a valid sticker code
+	req, err := http.NewRequest("GET", "/testcode2", nil)
+	if err != nil {
+		t.Fatalf("Failed to create request: %v", err)
+	}
+
+	// create a response recorder to capture the response
+	rr := httptest.NewRecorder()
+
+	// call the Dashboard handler function with the request and response recorder
+	handler := http.HandlerFunc(IDRoute)
+	handler.ServeHTTP(rr, req)
+
+	// check the HTTP method of the request
+	if req.Method != http.MethodGet {
+		t.Errorf("IDRoute was not called with the correct HTTP method: got %v, want %v", req.Method, http.MethodGet)
+	}
+}
