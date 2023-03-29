@@ -19,9 +19,9 @@ const routes: Routes = [{ path: '', component: HomePageComponent},
 {path: "user", component: SocialPageComponent},
 {path: "activate-code", component: ActivateCodeComponent},
 {path: ":id", component: IdDiscoveryComponent},
-{path: "dashboard/update-name", component: UpdateNameComponent},
-{path: "dashboard/update-bio", component: UpdateBioComponent},
-{path: "dashboard/update-socials", component: UpdateSocialsComponent},
+{path: "dashboard/update-name", component: UpdateNameComponent, canActivate: [AuthGuard]},
+{path: "dashboard/update-bio", component: UpdateBioComponent, canActivate: [AuthGuard]},
+{path: "dashboard/update-socials", component: UpdateSocialsComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

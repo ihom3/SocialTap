@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./update-bio.component.sass']
 })
 export class UpdateBioComponent {
-
+  Bio: string = "";
 }
