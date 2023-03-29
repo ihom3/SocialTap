@@ -182,8 +182,8 @@ func AddUserSocial(w http.ResponseWriter, r *http.Request) {
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var user User
-	decoding the data from the body of the request
-	whatever data we're getting we are decoding it with a reference to user
+	//decoding the data from the body of the request
+	//whatever data we're getting we are decoding it with a reference to user
 
 	json.NewDecoder(r.Body).Decode(&user)
 	//to save the data in the database
@@ -229,6 +229,26 @@ func UpdateProfilePicture(w http.ResponseWriter, r *http.Request) {
 	defer file.Close()
 
 	fmt.Println("File name: ", handler.Filename)
+	
+	fileName := "user-id-" + params["id"] + "-*.jpg"
+	filePath := filepath.Join("profile_pictures", fileName)
+
+	// check if file exists
+	files, err := filepath.Glob(filePath)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// delete file if it exists
+	for _, f := range files {
+		err = os.Remove(f)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
+
 	// upload picture
 	// to store it in the directory temporary:
 	tempFile, err2 := ioutil.TempFile("profile-pictures", "user-id-" + params["id"] + ".jpg")
@@ -248,6 +268,15 @@ func findUserByCode(code string) (User, error) {
 	var foundUser User
 	err := DB.Model(&User{}).Preload("SocialList").Find(&foundUser, "sticker_code = ?", code).Error
 	return foundUser, err
+}
+
+// deleting a code
+func DeleteCode(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)
+	var user UnregisteredCodes
+	DB.Delete(&user, params["id"])
+	json.NewEncoder(w).Encode("The code is deleted successfully.")
 }
 
 
