@@ -112,6 +112,21 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func AddCode(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var user UnregisteredCodes
+	//decoding the data from the body of the request
+	// data we're getting we are decoding it with a reference to user
+
+	json.NewDecoder(r.Body).Decode(&user)
+	//to save the data in the database
+	DB.Create(&user)
+
+	//to parse the data back to the browser, w=response writer
+	json.NewEncoder(w).Encode(user)
+}
+
+
 // getting all users
 func GetUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
