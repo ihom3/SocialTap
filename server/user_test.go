@@ -268,4 +268,33 @@ func TestUpdateProfilePicture(t *testing.T) {
 	// Clean up temporary files and directories
 	os.RemoveAll("profile_pictures")
 }
+func TestDeleteCode(t *testing.T) {
+	req, err := http.NewRequest("DELETE", "/unregistered/testcode5", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	rr := httptest.NewRecorder()
+
+	router := mux.NewRouter()
+	router.HandleFunc("/unregistered/{sticker_code}", DeleteCode)
+
+	router.ServeHTTP(rr, req)
+
+	if status := rr.Code; status != http.StatusOK {
+		t.Errorf("	Handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+
+	// Assert response body
+	result := strings.TrimSpace(rr.Body.String())
+	expected := "\"The code is deleted successfully.\""
+	if result != expected {
+		t.Errorf("	Handler returned unexpected body: got %v want %v",
+			rr.Body.String(), expected)
+	} else {
+		fmt.Println("	The code got deleted successfully.")
+	}
+	fmt.Println()
+}
 
