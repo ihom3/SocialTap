@@ -1,6 +1,6 @@
 <div class="container">
     <mat-card class="card scroll-card">
-        <mat-card-title >Update Socials</mat-card-title>
+        <mat-card-title class="p-4">Update Socials</mat-card-title>
         <mat-card-content>
             <div class="updateContainer w-100  divide-y">
                 <div class="w-full py-3" *ngFor="let social of socials"> 
@@ -16,7 +16,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions class="actions flex flex-col">
-            <div class="grid grid-cols-1">
+            <div class="grid grid-cols-1 pt-4">
             <button [disabled]="true"  class="mb-3" mat-raised-button color="primary">Update Socials</button>
             <button routerLink=".." mat-button color="primary"> Back</button>
         </div>
