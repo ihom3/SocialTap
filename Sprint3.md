@@ -39,7 +39,12 @@ From Sprint 2:
         socials, and unregistered tables were created.
 6. TestDeleteUser - It sends a delete request through the mock server and first checks the status code and then reads the response
         from the body to see if it matches the expected value.
+- SPRINT 3
 7. TestUpdateProfilePicture - It adds a test picture to the test directory and checks to see if it is saved.
+8. TestDeleteCode - It checks if a test code is deleted at the unregistered table through the DELETE method.
+9. TestAddCode - It checks if the AddCode method is a POST method.
+10. TestDashboard - It checks if the Dashboard method is a GET method.
+11. TestIDRoute - It checks if the IDRoute method is a GET method.
 
 
 ### Backend API Documentation
@@ -195,5 +200,12 @@ Will take id as a parameter and update the value the user decided to change. To 
 - "/users/{id}/instagram" is a GET METHOD that allows us to retrieve a users social media account, in this case specifically Instagram with id passed in as a parameter.
 - "/users/code" is a POST METHOD that allows a user to add a user social to the user specificed.
 - "/update-profile-picture" is a POST METHOD that allows for a user to change their profile picture and store it inside our database.
+- SPRINT 3
+- "/{sticker_code}" is a GET method that checks the unregistered_codes tables first and then the users table. It will return the unregistered code or the user info.
+- "/dashboard/{sticker_code}" is a GET method. It is the first endpoint where the users will be directed. If the user has not been registered, it will create an entry in the database for the user with all the fields being empty.If the user is already registered, it will respond with all the data of the user.
+- "/update-profile" is a POST method. It updates any data we pass in with the json body.
+- "/update-socials/{id}" is a PUT method that updates the Social List information in the database.
+- "/unregistered" is a POST method that adds an unregistered code in the database. It carries the sticker code in the json body.
+- "/unregistered/{sticker_code}" is a DELETE method that deletes the code from the unregistered table, after a user with that code has been created.
 
 

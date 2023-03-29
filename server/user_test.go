@@ -268,4 +268,93 @@ func TestUpdateProfilePicture(t *testing.T) {
 	// Clean up temporary files and directories
 	os.RemoveAll("profile_pictures")
 }
+func TestDeleteCode(t *testing.T) {
+	req, err := http.NewRequest("DELETE", "/unregistered/testcode5", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
 
+	rr := httptest.NewRecorder()
+
+	router := mux.NewRouter()
+	router.HandleFunc("/unregistered/{sticker_code}", DeleteCode)
+
+	router.ServeHTTP(rr, req)
+
+	if status := rr.Code; status != http.StatusOK {
+		t.Errorf("	Handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+
+	// Assert response body
+	result := strings.TrimSpace(rr.Body.String())
+	expected := "\"The code is deleted successfully.\""
+	if result != expected {
+		t.Errorf("	Handler returned unexpected body: got %v want %v",
+			rr.Body.String(), expected)
+	} else {
+		fmt.Println("	The code got deleted successfully.")
+	}
+	fmt.Println()
+}
+
+func TestAddCode(t *testing.T) {
+	// create a new HTTP request with a valid sticker code
+	reqBody := `{"sticker_code": "ABC123"}`
+	req, err := http.NewRequest("POST", "/unregistered", strings.NewReader(reqBody))
+	if err != nil {
+		t.Fatalf("Failed to create request: %v", err)
+	}
+
+	// create a response recorder to capture the response
+	rr := httptest.NewRecorder()
+
+	// call the Dashboard handler function with the request and response recorder
+	handler := http.HandlerFunc(AddCode)
+	handler.ServeHTTP(rr, req)
+
+	// check the HTTP method of the request
+	if req.Method != http.MethodPost {
+		t.Errorf("AddCode was not called with the correct HTTP method: got %v, want %v", req.Method, http.MethodPost)
+	}
+}
+
+func TestDashboard(t *testing.T) {
+	// create a new HTTP request with a valid sticker code
+	req, err := http.NewRequest("GET", "/dashboard/testcode5", nil)
+	if err != nil {
+		t.Fatalf("Failed to create request: %v", err)
+	}
+
+	// create a response recorder to capture the response
+	rr := httptest.NewRecorder()
+
+	// call the Dashboard handler function with the request and response recorder
+	handler := http.HandlerFunc(Dashboard)
+	handler.ServeHTTP(rr, req)
+
+	// check the HTTP method of the request
+	if req.Method != http.MethodGet {
+		t.Errorf("Dashboard was not called with the correct HTTP method: got %v, want %v", req.Method, http.MethodGet)
+	}
+}
+
+func TestIDRoute(t *testing.T) {
+	// create a new HTTP request with a valid sticker code
+	req, err := http.NewRequest("GET", "/testcode2", nil)
+	if err != nil {
+		t.Fatalf("Failed to create request: %v", err)
+	}
+
+	// create a response recorder to capture the response
+	rr := httptest.NewRecorder()
+
+	// call the Dashboard handler function with the request and response recorder
+	handler := http.HandlerFunc(IDRoute)
+	handler.ServeHTTP(rr, req)
+
+	// check the HTTP method of the request
+	if req.Method != http.MethodGet {
+		t.Errorf("IDRoute was not called with the correct HTTP method: got %v, want %v", req.Method, http.MethodGet)
+	}
+}
