@@ -4,9 +4,14 @@
 ## Frontend
 
 ### Work Completed
+-Created dashboard with buttons to Update the user's Name, Bio, and Socials, as well as to see how their profile appears to others
+-Routed Name, Bio, and Social edit buttons to separate pages with an entry form for the user to enter their desired changes
+-Wrote new tests in Angular and Cypress to ensure all functions are working properly 
 
 ### Unit Tests
+New for Sprint 3:
 
+From Sprint 2:
 1. Test the creation of the SocialProviderService
 2. Test the creation of the RegisterComponent
 3. Test the creation of the SocialTileComponent
