@@ -27,6 +27,10 @@ import { FormsModule } from '@angular/forms';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateNameComponent } from './component/dashboard/update-name/update-name.component';
+import { UpdateBioComponent } from './component/dashboard/update-bio/update-bio.component';
+import { ViewPageComponent } from './component/dashboard/view-page/view-page.component';
+import { UpdateSocialsComponent } from './component/dashboard/update-socials/update-socials.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +46,11 @@ import { HttpClientModule } from '@angular/common/http';
     ErrorPageComponent,
     ActivateCodeComponent,
     CardComponent,
-    AuthButtonComponent
+    AuthButtonComponent,
+    UpdateNameComponent,
+    UpdateBioComponent,
+    ViewPageComponent,
+    UpdateSocialsComponent
   ],
   imports: [
     HttpClientModule,

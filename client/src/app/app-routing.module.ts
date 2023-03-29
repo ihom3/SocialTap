@@ -9,13 +9,19 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { RegisterComponent } from './components/register/register.component';
 import { SocialPageComponent } from './components/social-page/social-page.component';
 import { AuthGuard} from "@auth0/auth0-angular";
+import { UpdateNameComponent } from './component/dashboard/update-name/update-name.component';
+import { UpdateBioComponent } from './component/dashboard/update-bio/update-bio.component';
+import { UpdateSocialsComponent } from './component/dashboard/update-socials/update-socials.component';
 const routes: Routes = [{ path: '', component: HomePageComponent},
 { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
 {path: "register", component: RegisterComponent},
 {path: "error", component: PageNotFoundComponent},
 {path: "user", component: SocialPageComponent},
 {path: "activate-code", component: ActivateCodeComponent},
-{path: ":id", component: IdDiscoveryComponent}
+{path: ":id", component: IdDiscoveryComponent},
+{path: "dashboard/update-name", component: UpdateNameComponent},
+{path: "dashboard/update-bio", component: UpdateBioComponent},
+{path: "dashboard/update-socials", component: UpdateSocialsComponent},
 ];
 
 @NgModule({
@@ -24,9 +30,5 @@ const routes: Routes = [{ path: '', component: HomePageComponent},
 })
 export class AppRoutingModule {
   constructor() {}
-  
- 
- 
-  
 
  }

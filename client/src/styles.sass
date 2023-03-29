@@ -1,6 +1,25 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
 *
     margin: 0
     padding: 0
     box-sizing: border-box
 body
     background-color: #F5F5F5
+.container
+    display: flex
+    height: calc(100vh - 80px)
+    justify-content: center
+    align-items: center
+.card
+    width: 50vh
+    aspect-ratio: 1
+    display: flex
+    justify-content: space-evenly
+    text-align: center
+.actions
+    display: grid
+    align-items: center
+    justify-content: center
