@@ -39,7 +39,7 @@ From Sprint 2:
         socials, and unregistered tables were created.
 6. TestDeleteUser - It sends a delete request through the mock server and first checks the status code and then reads the response
         from the body to see if it matches the expected value.
-SPRINT 3
+- SPRINT 3
 7. TestUpdateProfilePicture - It adds a test picture to the test directory and checks to see if it is saved.
 8. TestDeleteCode - It checks if a test code is deleted at the unregistered table through the DELETE method.
 9. TestAddCode - It checks if the AddCode method is a POST method.
