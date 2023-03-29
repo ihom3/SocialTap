@@ -106,6 +106,8 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 			json.NewEncoder(w).Encode("Invalid Request")
 		} else {
 			CreateUser(w, r)
+			//to delete the code from the unregistered table
+			DeleteCode(w, r)
 		}
 	} else { // if user exists
 		json.NewEncoder(w).Encode(registered)
@@ -124,6 +126,26 @@ func AddCode(w http.ResponseWriter, r *http.Request) {
 
 	//to parse the data back to the browser, w=response writer
 	json.NewEncoder(w).Encode(user)
+}
+
+func DeleteCode(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)
+	// Retrieve the record with the given sticker_code value from the database
+	var code UnregisteredCodes
+	if err := DB.Where("sticker_code = ?", params["sticker_code"]).First(&code).Error; err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode("Code not found")
+		return
+	}
+
+	// Delete the record from the database
+	if err := DB.Delete(&code).Error; err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		json.NewEncoder(w).Encode("Failed to delete code")
+		return
+	}
+	json.NewEncoder(w).Encode("The code is deleted successfully.")
 }
 
 
