@@ -199,8 +199,8 @@ Will take id as a parameter and update the value the user decided to change. To 
 
 - "/users/{id}/instagram" is a GET METHOD that allows us to retrieve a users social media account, in this case specifically Instagram with id passed in as a parameter.
 - "/users/code" is a POST METHOD that allows a user to add a user social to the user specificed.
-- "/update-profile-picture" is a POST METHOD that allows for a user to change their profile picture and store it inside our database.
 - SPRINT 3
+- "/update-profile-picture" is a POST METHOD that allows for a user to change their profile picture and store it inside our database.
 - "/{sticker_code}" is a GET method that checks the unregistered_codes tables first and then the users table. It will return the unregistered code or the user info.
 - "/dashboard/{sticker_code}" is a GET method. It is the first endpoint where the users will be directed. If the user has not been registered, it will create an entry in the database for the user with all the fields being empty.If the user is already registered, it will respond with all the data of the user.
 - "/update-profile" is a POST method. It updates any data we pass in with the json body.
