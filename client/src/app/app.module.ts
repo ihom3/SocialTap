@@ -19,6 +19,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule} from "@angular/material/button";
 import { ActivateCodeComponent } from './components/activate-code/activate-code.component';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatCardModule } from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field"
 import {MatInputModule} from "@angular/material/input";
@@ -71,7 +72,8 @@ import { UpdateSocialsComponent } from './component/dashboard/update-socials/upd
       authorizationParams: {
         redirect_uri: window.location.origin
       }
-    })
+    }),
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
