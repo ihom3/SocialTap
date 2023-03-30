@@ -32,15 +32,20 @@ func initRouter() {
 	r.HandleFunc("/users/{id}", DeleteUser).Methods("DELETE")
 	r.HandleFunc("/users/{id}/instagram", GetSocial).Methods("GET")
 	r.HandleFunc("/users/code", AddUserSocial).Methods("POST")
-	r.HandleFunc("/update-profile-picture", UpdateProfilePicture).Methods("POST")
+	
+	r.HandleFunc("/unregistered", AddCode).Methods("POST")
+	r.HandleFunc("/unregistered/{sticker_code}", DeleteCode).Methods("DELETE")
 
-	// needed:
+	r.HandleFunc("/user/{sticker_code}", GetUserNameByCode).Methods("GET")
+	r.HandleFunc("/picture/{sticker_code}", GetPictureStickerCode).Methods("GET")
+
 	//r.HandleFunc("/home", HomeHandler)
-	//r.HandleFunc("/{id}", LoginHandler)
-	//r.HandleFunc("/dashboard", LoginHandler)
-	//r.HandleFunc("/update-profile", LoginHandler)
+	r.HandleFunc("/{sticker_code}", IDRoute).Methods("GET")
+	r.HandleFunc("/dashboard/{sticker_code}", Dashboard).Methods("GET")
+	r.HandleFunc("/update-profile", UpdateUser).Methods("POST")
 	//r.HandleFunc("/udate-socials", LoginHandler)
-	//r.HandleFunc("/add-code", LoginHandler)
+	r.HandleFunc("/update-socials/{id}", UpdateSocialInfo).Methods("PUT")
+	r.HandleFunc("/update-profile-picture/{id}", UpdateProfilePicture).Methods("POST")
 
 	//ListenAndServe(address, handler http.Handler) listens on the TCP network address
 	//then calls serve with handler to handle requests on incoming connections.
