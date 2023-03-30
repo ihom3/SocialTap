@@ -4,14 +4,31 @@
 ## Frontend
 
 ### Work Completed
-- Created dashboard with buttons to Update the user's Name, Bio, and Socials, as well as to see how their profile appears to others
+- Created Auth0 authentication guard for Angular frontend routes
+
+- Added authentication guard to the following routes
+
+        * dashboard
+        
+        * dashboard/update-name
+        
+        * dashboard/update-bio
+
+        * dashboard/update-socials
+        
+- Created a dashboard for the user to change their Name, Bio, and Socials and to see how their profile appears to others
 
 - Routed Name, Bio, and Social edit buttons to separate pages with an entry form for the user to enter their desired changes
 
-- Wrote new tests in Angular and Cypress to ensure all functions are working properly 
+- Wrote new tests in Cypress to ensure all new functions are working properly 
+
+- Improved navigation with a sidebar and clickable logo
 
 ### Unit Tests
 New for Sprint 3:
+
+![preLoginSpecs](https://user-images.githubusercontent.com/67469516/228697184-1659b51e-e104-4c88-a304-4797058f3302.PNG)
+![postLoginSpecs](https://user-images.githubusercontent.com/67469516/228697197-d27e7fea-f237-40c5-8866-fa853cc7339c.PNG)
 
 From Sprint 2:
 1. Test the creation of the SocialProviderService
@@ -25,7 +42,7 @@ From Sprint 2:
 ## Backend
 
 ### Work Completed
-#### Description 
+For the backend portion of this project for this sprint, we added extra routes to our API. We created the main dashboard page which will be the first endpoint the user will be redirected to after tapping the sticker. This endpoint will be passed through the authentication middleware, meaning it is only accessible by users that have already been registered. The middleware will pass the registration code that was stored with the Auth0 profile with the request to the handler function. First the registered users table is queried, then if the user doesn't exist, a new user is created. Also, we first check if the code is valid, then remove it from the unregistered table. We also added functionality to the update-profile-picture endpoint. Now the user can add a profile picture which will be stored in a directory. If the user wants to update their picture, now it is possible, with the new version of this handler function we implemented in this sprint. We made sure all pictures are named with the user id so that it is easier to identify and locate.
 
 ### Unit Tests
 
@@ -39,7 +56,12 @@ From Sprint 2:
         socials, and unregistered tables were created.
 6. TestDeleteUser - It sends a delete request through the mock server and first checks the status code and then reads the response
         from the body to see if it matches the expected value.
+- SPRINT 3
 7. TestUpdateProfilePicture - It adds a test picture to the test directory and checks to see if it is saved.
+8. TestDeleteCode - It checks if a test code is deleted at the unregistered table through the DELETE method.
+9. TestAddCode - It checks if the AddCode method is a POST method.
+10. TestDashboard - It checks if the Dashboard method is a GET method.
+11. TestIDRoute - It checks if the IDRoute method is a GET method.
 
 
 ### Backend API Documentation
@@ -194,6 +216,13 @@ Will take id as a parameter and update the value the user decided to change. To 
 
 - "/users/{id}/instagram" is a GET METHOD that allows us to retrieve a users social media account, in this case specifically Instagram with id passed in as a parameter.
 - "/users/code" is a POST METHOD that allows a user to add a user social to the user specificed.
+- SPRINT 3
 - "/update-profile-picture" is a POST METHOD that allows for a user to change their profile picture and store it inside our database.
+- "/{sticker_code}" is a GET method that checks the unregistered_codes tables first and then the users table. It will return the unregistered code or the user info.
+- "/dashboard/{sticker_code}" is a GET method. It is the first endpoint where the users will be directed. If the user has not been registered, it will create an entry in the database for the user with all the fields being empty.If the user is already registered, it will respond with all the data of the user.
+- "/update-profile" is a POST method. It updates any data we pass in with the json body.
+- "/update-socials/{id}" is a PUT method that updates the Social List information in the database.
+- "/unregistered" is a POST method that adds an unregistered code in the database. It carries the sticker code in the json body.
+- "/unregistered/{sticker_code}" is a DELETE method that deletes the code from the unregistered table, after a user with that code has been created.
 
 

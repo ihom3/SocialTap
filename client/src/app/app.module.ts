@@ -33,7 +33,8 @@ import { UpdateBioComponent } from './component/dashboard/update-bio/update-bio.
 import { ViewPageComponent } from './component/dashboard/view-page/view-page.component';
 import { UpdateSocialsComponent } from './component/dashboard/update-socials/update-socials.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { MatListModule} from "@angular/material/list";
+import {MatListModule} from "@angular/material/list";
+import { ButtonComponent } from './components/button/button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { MatListModule} from "@angular/material/list";
     UpdateNameComponent,
     UpdateBioComponent,
     ViewPageComponent,
-    UpdateSocialsComponent
+    UpdateSocialsComponent,
+    ButtonComponent
   ],
   imports: [
     HttpClientModule,
