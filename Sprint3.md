@@ -62,7 +62,7 @@ For the backend portion of this project for this sprint, we added extra routes t
 9. TestAddCode - It checks if the AddCode method is a POST method.
 10. TestDashboard - It checks if the Dashboard method is a GET method.
 11. TestIDRoute - It checks if the IDRoute method is a GET method.
-12. TestGetUserNameByCode - It checks if the user exists or not through a GET method.
+12. TestGetUserNameByCode - It checks if the user exists or not by using their unique sticker code through a GET method.
 
 
 ### Backend API Documentation
