@@ -358,3 +358,10 @@ func TestIDRoute(t *testing.T) {
 		t.Errorf("IDRoute was not called with the correct HTTP method: got %v, want %v", req.Method, http.MethodGet)
 	}
 }
+
+func TestGetUserNameByCode(t *testing.T) {
+	// Initialize a test database
+	db, err := gorm.Open(mysql.Open(DNS), &gorm.Config{})
+	if err != nil {
+		t.Fatalf("Error opening test database: %v", err)
+	}
