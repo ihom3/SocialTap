@@ -32,6 +32,8 @@ import { UpdateNameComponent } from './component/dashboard/update-name/update-na
 import { UpdateBioComponent } from './component/dashboard/update-bio/update-bio.component';
 import { ViewPageComponent } from './component/dashboard/view-page/view-page.component';
 import { UpdateSocialsComponent } from './component/dashboard/update-socials/update-socials.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import { MatListModule} from "@angular/material/list";
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +75,9 @@ import { UpdateSocialsComponent } from './component/dashboard/update-socials/upd
         redirect_uri: window.location.origin
       }
     }),
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

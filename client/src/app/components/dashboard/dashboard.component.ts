@@ -13,7 +13,7 @@ export class DashboardComponent {
   visitUpdateName = () =>
     this.router.navigate(['/dashboard/update-name']);
   visitUpdateBio = () => this.router.navigate(['dashboard/update-bio']);
-  visitPage = () => this.router.navigate(['dashboard/page']);
+  visitPage = () => this.router.navigate(['/registered-test']);
   visitUpdateSocials = () => this.router.navigate(['dashboard/update-socials']);
   ngOnInit(): void {
 

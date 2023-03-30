@@ -1,6 +1,6 @@
-<p>
+<p style="margin-bottom: 0">
     <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
       <span class="example-spacer"></span>
@@ -9,5 +9,19 @@
       <app-auth-button></app-auth-button>
     </mat-toolbar>
   </p>
-<router-outlet>
-</router-outlet>
+
+  <mat-drawer-container class="example-container" hasBackdrop="true">
+    <mat-drawer #drawer mode="over" class="w-1/3 max-w-sm">
+      <mat-action-list class="text-center">
+        <button mat-list-item (click)="drawer.toggle()" routerLink="">Home</button>
+        <button mat-list-item (click)="drawer.toggle()" routerLink="dashboard">Dashboard</button>
+        <button mat-list-item (click)="drawer.toggle()" routerLink="user">Example Page</button>
+      </mat-action-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      
+      <router-outlet>
+      </router-outlet>
+      
+    </mat-drawer-content>
+  </mat-drawer-container>
