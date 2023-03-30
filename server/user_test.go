@@ -365,3 +365,72 @@ func TestGetUserNameByCode(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error opening test database: %v", err)
 	}
+func TestGetUserNameByCode(t *testing.T) {
+	// Initialize a test database
+	db, err := gorm.Open(mysql.Open(DNS), &gorm.Config{})
+	if err != nil {
+		t.Fatalf("Error opening test database: %v", err)
+	}
+	//defer db.Close()
+
+	// Migrate the test database schema
+	db.AutoMigrate(&User{})
+
+	// Insert a test user into the database
+	testUser := User{
+		FirstName:      "Ian",
+		UserEmail:      "ian.n.",
+		LastName:       "B",
+		StickerCode:    "hello",
+		BioText:        "hello world",
+		ProfilePicture: "1",
+		SocialList: Socials{
+			Facebook: SocialType{
+				SocialName: "",
+				Status:     false,
+				URL:        "",
+			},
+			Snapchat: SocialType{
+				SocialName: "",
+				Status:     false,
+				URL:        "",
+			},
+			Instagram: SocialType{
+				SocialName: "",
+				Status:     false,
+				URL:        "",
+			},
+		},
+	}
+	db.Create(&testUser)
+
+	// Initialize a new request with the test sticker code
+	req, err := http.NewRequest("GET", "/user/hello", nil)
+	if err != nil {
+		t.Fatalf("Error creating request: %v", err)
+	}
+
+	// Initialize a new response recorder
+	recorder := httptest.NewRecorder()
+
+	// Call the handler function with the test request and response recorder
+	GetUserNameByCode(recorder, req)
+
+	// Check the response status code
+	if recorder.Code != http.StatusOK {
+		t.Errorf("Expected status code %d, but got %d", http.StatusOK, recorder.Code)
+	}
+
+	// Check the response body
+	expected := `{"first_name":"Ian","last_name":"B"}`
+	if recorder.Body.String() != expected {
+		t.Errorf("Expected response body '%s', but got '%s'", expected, recorder.Body.String())
+	}
+	// Debugging statements
+	// t.Logf("Response status code: %d", recorder.Code)
+	// t.Logf("Response body: %s", recorder.Body.String())
+
+	
+
+}
+
