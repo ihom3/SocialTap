@@ -15,13 +15,17 @@
 
         * dashboard/update-socials
         
-- Created a dashboard for the user to change their Name, Bio, and Socials and to see how their profile appears to others
+- Created a dashboard for the user to change their Name, Bio, and Socials and to see how their profile appears to others. In the next sprint we plan to extend this functionally to updating a users profile picture. 
 
 - Routed Name, Bio, and Social edit buttons to separate pages with an entry form for the user to enter their desired changes
 
 - Wrote new tests in Cypress to ensure all new functions are working properly 
 
 - Improved navigation with a sidebar and clickable logo
+- Added the following links to the sidebar navigation:
+    * Dashboard
+    * Home
+    * Example Page
 
 ### Unit Tests
 New for Sprint 3:
