@@ -21,11 +21,7 @@
 
 - Wrote new tests in Cypress to ensure all new functions are working properly 
 
-- Improved navigation with a sidebar and clickable logo
-- Added the following links to the sidebar navigation:
-    * Dashboard
-    * Home
-    * Example Page
+
 
 We plan to potentially move the login button to the sidebar navigation in the next sprint and add different buttons for other functions. 
 ### Unit Tests
