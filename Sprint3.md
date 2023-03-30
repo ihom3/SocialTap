@@ -1,8 +1,7 @@
 # Sprint3
-## [Group Video]()
+## [Group Video](https://youtu.be/mIZaqG3_4PY)
 
 ## Frontend
-
 ### Work Completed
 - Created Auth0 authentication guard for Angular frontend routes
 
