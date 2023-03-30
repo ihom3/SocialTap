@@ -225,5 +225,5 @@ Will take id as a parameter and update the value the user decided to change. To 
 - "/update-socials/{id}" is a PUT method that updates the Social List information in the database.
 - "/unregistered" is a POST method that adds an unregistered code in the database. It carries the sticker code in the json body.
 - "/unregistered/{sticker_code}" is a DELETE method that deletes the code from the unregistered table, after a user with that code has been created.
-
-
+- "/user/{sticker_code}" is a GET method that retrieves a users first and last name that's associated with their sticker code. Else, it's unregistered or it doesn't exist.
+- "/picture/{sticker_code}" is a GET method that retrieves a users profile picture that is associated with their sticker code. Else, it's unregistered or it doesn't exist.
