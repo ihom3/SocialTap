@@ -4,6 +4,15 @@
 ## Frontend
 
 ### Work Completed
+- Created Auth0 authentication guard for Angular frontend routes
+
+- Added authentication guard to the following routes:
+-       dashboard
+-       dashboard/update-name
+-       dashboard/update-bio
+-       dashboard/update-socials
+
+
 - Created dashboard with buttons to Update the user's Name, Bio, and Socials, as well as to see how their profile appears to others
 
 - Routed Name, Bio, and Social edit buttons to separate pages with an entry form for the user to enter their desired changes
