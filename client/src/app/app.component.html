@@ -4,7 +4,11 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="example-spacer"></span>
-      <span>Social Tap</span>
+      <span><app-button
+        color="primary"
+        text="SocialTap"
+        (btnClick)="returnHome()"
+      ></app-button></span>
       <span class="example-spacer"></span>
       <app-auth-button></app-auth-button>
     </mat-toolbar>

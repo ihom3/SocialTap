@@ -32,6 +32,7 @@ import { UpdateNameComponent } from './component/dashboard/update-name/update-na
 import { UpdateBioComponent } from './component/dashboard/update-bio/update-bio.component';
 import { ViewPageComponent } from './component/dashboard/view-page/view-page.component';
 import { UpdateSocialsComponent } from './component/dashboard/update-socials/update-socials.component';
+import { ButtonComponent } from './components/button/button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { UpdateSocialsComponent } from './component/dashboard/update-socials/upd
     UpdateNameComponent,
     UpdateBioComponent,
     ViewPageComponent,
-    UpdateSocialsComponent
+    UpdateSocialsComponent,
+    ButtonComponent
   ],
   imports: [
     HttpClientModule,
