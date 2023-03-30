@@ -42,7 +42,7 @@ From Sprint 2:
 ## Backend
 
 ### Work Completed
-For the backend portion of this project for this sprint, we added extra routes to our API. We created the main dashboard page which will be the first endpoint the user will be redirected to after tapping the sticker. This endpoint will be passed through the authentication middleware, meaning it is only accessible by users that have already been registered. The middleware will pass the registration code that was stored with the Auth0 profile with the request to the handler function. First the registered users table is queried, then if the user doesn't exist, a new user is created. Also, we first check if the code is valid, then remove it from the unregistered table. We also added functionality to the update-profile-picture endpoint. Now the user can add a profile picture which will be stored in a directory. If the user wants to update their picture, now it is possible, with the new version of this handler function we implemented in this sprint. We made sure all pictures are named with the user id so that it is easier to identify and locate.
+For the backend portion of this project for this sprint, we added extra routes to our API. We created the main dashboard page which will be the first endpoint the user will be redirected to after tapping the sticker. This endpoint will be passed through the authentication middleware, meaning it is only accessible by users that have already been registered. The middleware will pass the registration code that was stored with the Auth0 profile with the request to the handler function. First the registered users table is queried, then if the user doesn't exist, a new user is created. Also, we first check if the code is valid, then remove it from the unregistered table. We also added functionality to the update-profile-picture endpoint. Now the user can add a profile picture which will be stored in a directory. If the user wants to update their picture, now it is possible, with the new version of this handler function we implemented in this sprint. We made sure all pictures are named with the user id so that it is easier to identify and locate. Another endpoint created in the backend (IDRoute) checks the specified sticker code to see if it exists as an unregistered code. If it then doesn't also exist in the registered codes, we display that the user doesn't exist. If it does exist inside our registered users table, we display the user associated with that sticker code.
 
 ### Unit Tests
 
@@ -62,6 +62,7 @@ For the backend portion of this project for this sprint, we added extra routes t
 9. TestAddCode - It checks if the AddCode method is a POST method.
 10. TestDashboard - It checks if the Dashboard method is a GET method.
 11. TestIDRoute - It checks if the IDRoute method is a GET method.
+12. TestGetUserNameByCode - It checks if the user exists or not through a GET method.
 
 
 ### Backend API Documentation
