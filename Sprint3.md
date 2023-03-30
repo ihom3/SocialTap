@@ -7,11 +7,10 @@
 - Created Auth0 authentication guard for Angular frontend routes
 
 - Added authentication guard to the following routes:
--       dashboard
--       dashboard/update-name
--       dashboard/update-bio
--       dashboard/update-socials
-
+        - dashboard
+        - dashboard/update-name
+        - dashboard/update-bio
+        - dashboard/update-socials
 
 - Created dashboard with buttons to Update the user's Name, Bio, and Socials, as well as to see how their profile appears to others
 
@@ -19,9 +18,12 @@
 
 - Wrote new tests in Angular and Cypress to ensure all functions are working properly 
 
+- Improved navigation with a sidebar and clickable logo
+
 ### Unit Tests
 New for Sprint 3:
-
+![preLoginSpecs](https://user-images.githubusercontent.com/67469516/228697184-1659b51e-e104-4c88-a304-4797058f3302.PNG)
+![postLoginSpecs](https://user-images.githubusercontent.com/67469516/228697197-d27e7fea-f237-40c5-8866-fa853cc7339c.PNG)
 From Sprint 2:
 1. Test the creation of the SocialProviderService
 2. Test the creation of the RegisterComponent
