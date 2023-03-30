@@ -345,5 +345,33 @@ func GetPictureStickerCode(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(fullName)
 }
 
+func GetUserNameByCode(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 
+	// Get the sticker code from the URL parameter
+	vars := mux.Vars(r)
+	stickerCode := vars["sticker_code"]
 
+	// Query the database for the user with the matching sticker code
+	var user User
+	if err := DB.Where("sticker_code = ?", stickerCode).First(&user).Error; err != nil {
+		// If no user was found, return a 404 error
+		if err != gorm.ErrRecordNotFound {
+			w.WriteHeader(http.StatusInternalServerError)
+			fmt.Fprintf(w, "Error: %v", err)
+			return
+		}
+		w.WriteHeader(http.StatusNotFound)
+		fmt.Fprintf(w, "User not found for sticker code %s", stickerCode)
+		return
+
+	}
+
+	// Return the user's full name as a JSON response
+	type FullName struct {
+		First string `json:"first_name"`
+		Last  string `json:"last_name"`
+	}
+	fullName := FullName{First: user.FirstName, Last: user.LastName}
+	json.NewEncoder(w).Encode(fullName)
+}
