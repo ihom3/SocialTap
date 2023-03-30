@@ -6,7 +6,7 @@
 ### Work Completed
 - Created Auth0 authentication guard for Angular frontend routes
 
-- Added authentication guard to the following routes:
+- Added authentication guard to the following routes
 
         * dashboard
         
@@ -16,12 +16,11 @@
 
         * dashboard/update-socials
         
-
-- Created dashboard with buttons to Update the user's Name, Bio, and Socials, as well as to see how their profile appears to others
+- Created a dashboard for the user to change their Name, Bio, and Socials and to see how their profile appears to others
 
 - Routed Name, Bio, and Social edit buttons to separate pages with an entry form for the user to enter their desired changes
 
-- Wrote new tests in Angular and Cypress to ensure all functions are working properly 
+- Wrote new tests in Cypress to ensure all new functions are working properly 
 
 - Improved navigation with a sidebar and clickable logo
 
