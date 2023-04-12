@@ -22,7 +22,7 @@ import (
 // method to initialize the router
 func initRouter() {
 	r := mux.NewRouter()
-	r.Use(authRequired)	//HandleFunc registers the handler function for the given pattern in the server
+	//HandleFunc registers the handler function for the given pattern in the server
 	//inside the handle function we need to provide the route information = path
 	//then we need to provide the function we need to call when we see /users
 	r.HandleFunc("/users", GetUsers).Methods("GET")
@@ -32,14 +32,16 @@ func initRouter() {
 	r.HandleFunc("/users/{id}", DeleteUser).Methods("DELETE")
 	r.HandleFunc("/users/{id}/instagram", GetSocial).Methods("GET")
 	r.HandleFunc("/users/code", AddUserSocial).Methods("POST")
-	r.HandleFunc("/update-profile-picture", UpdateProfilePicture).Methods("POST")
+	r.HandleFunc("/unregistered", AddCode).Methods("POST")
+	r.HandleFunc("/unregistered/{sticker_code}", DeleteCode).Methods("DELETE")
 
-	// needed:
 	//r.HandleFunc("/home", HomeHandler)
-	//r.HandleFunc("/{id}", LoginHandler)
-	//r.HandleFunc("/dashboard", LoginHandler)
-	//r.HandleFunc("/update-profile", LoginHandler)
+	r.HandleFunc("/{id}", IDRoute).Methods("GET")
+	r.HandleFunc("/dashboard/{sticker_code}", Dashboard).Methods("GET")
+	r.HandleFunc("/update-profile", UpdateUser).Methods("POST")
 	//r.HandleFunc("/udate-socials", LoginHandler)
+	r.HandleFunc("/update-socials/{id}", UpdateSocialInfo).Methods("PUT")
+	r.HandleFunc("/update-profile-picture/{id}", UpdateProfilePicture).Methods("POST")
 	//r.HandleFunc("/add-code", LoginHandler)
 
 	//ListenAndServe(address, handler http.Handler) listens on the TCP network address
@@ -52,8 +54,36 @@ func initRouter() {
 
 func main() {
 	//calling the router
-	setAuth0Variables()	
 	InitialMigration()
 	initRouter()
 
 }
+
+//short variable declarations (:=) can only be used inside functions in go
+
+//slices in golang just like arrays but without a fixed sized
+
+//parsing templates
+//include: "html/template"
+//
+//var tpl *template.Template ---- global variable, pointer to our template
+//in main:
+//func ParseFiles(filenames...string) (*Template, error)
+//tpl, _ = template.ParseFiles("templates/index.html") ------ if the file is not in the main directory you need to use /<name of lower directory>/index.html, if it's higher directory use ../index.html
+//	or you can use tpl, _ = tpl.ParseFiles("templates/index.html")
+//	for multiple files, use the wild character "*" to parse the files:
+//	tpl, _ = template.ParseGlob("templates/*.html"), it is saying, parse anything that ends with .html
+//then call handler function to handle the index
+//r.HandleFunc("/", indexHandler) ----- register path to a handler
+//r.ListenAnd........ fire up the server
+//
+//to serve that parsed template to the writer:
+//func indexHandler(w http.ResponseWriter, r *http.Request)
+//func (t *Template) Execute(wr io.Writer, data interface{}) error
+//tpl.Execute(w, nil)---nil if do not want to pass in any data
+//
+//parsing templates with data
+//{{.}}		renders the root element
+//{{.Name}}		renders the Name field in a nested element
+//{{if .Done}} {{else}} {{end}}		defines an if/else statement
+//{{range.List}} {{.}} {{end}}

@@ -18,10 +18,13 @@ const routes: Routes = [{ path: '', component: HomePageComponent},
 {path: "error", component: PageNotFoundComponent},
 {path: "user", component: SocialPageComponent},
 {path: "activate-code", component: ActivateCodeComponent},
+{path: "social-page", component: SocialPageComponent},
+{path: "page-not-found", component: PageNotFoundComponent},
 {path: ":id", component: IdDiscoveryComponent},
 {path: "dashboard/update-name", component: UpdateNameComponent, canActivate: [AuthGuard]},
 {path: "dashboard/update-bio", component: UpdateBioComponent, canActivate: [AuthGuard]},
 {path: "dashboard/update-socials", component: UpdateSocialsComponent, canActivate: [AuthGuard]},
+
 ];
 
 @NgModule({

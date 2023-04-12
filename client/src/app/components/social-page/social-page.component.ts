@@ -11,10 +11,14 @@ import { UserRequest, SocialReq } from 'src/app/models/UserReq';
   styleUrls: ['./social-page.component.sass']
 })
 export class SocialPageComponent implements OnInit {
-  header: Header;
+  header: Header = {
+    bio: "",
+    imageUrl: "",
+    name: ""
+  };
   socials: Social[] = [];
   id: string;
-  user: UserRequest;
+  user: any;
   constructor(private router: Router) {
     const state = this.router.getCurrentNavigation()?.extras.state;
     this.id = state ? state['id'] : "";
@@ -24,8 +28,17 @@ export class SocialPageComponent implements OnInit {
   }
   ngOnInit(): void {
     //fetch user data from DB
-    this.socials = SOCIALS;
-    this.header = HEADER;
+    console.log(this.user.user.social_list);
+    Object.values(this.user.user.social_list).forEach((key: any, index) => {
+      if(key.status) {
+        var social: Social = { name: key.name, url: key.url, active: key.status};
+        this.socials.push(social);
+      }
+    });
+    
+    this.header.bio = this.user.user.bio_text;
+    this.header.imageUrl = this.user.user.profile_picture;
+    this.header.name = this.user.user.first_name + " " + this.user.user.last_name;
     // Object.entries(this.user.user.social_list).forEach(([key, value]: [string, SocialReq], index) => {
     //   if(value.status) {
     //   var social: Social = { name: key, url: value.url, active: value.status};

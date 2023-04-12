@@ -13,6 +13,7 @@ export class SocialGridComponent implements OnInit {
   rowString: string = "";
 
   ngOnInit(): void {
+    console.log(this.socialList);
     var count: number = 0;
     this.socialList.forEach(li => {if(li.active) count++})
     count = Math.ceil(count / 2);
