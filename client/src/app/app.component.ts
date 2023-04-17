@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  constructor(private router: Router) { }
 
-  returnHome() {
-    this.router.navigate(['/']);
-  }
+  title = 'social-tap';
+
 }
-
