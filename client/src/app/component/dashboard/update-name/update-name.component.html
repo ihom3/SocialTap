@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-title >Update Name</mat-card-title>
+        <mat-card-content>
+            <div class="pb-10">
+                <h4>Current Name:</h4>
+                <p>Ian Blasko</p>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>New Name</mat-label>
+                <input [(ngModel)]="this.Name" matInput placeholder="John Doe">
+            </mat-form-field>
+            
+        </mat-card-content>
+        <mat-card-actions class="actions flex flex-col">
+            <div class="grid grid-cols-1">
+            <button [disabled]="this.Name === '' || this.Name === 'Ian Blasko'"  class="mb-3" mat-raised-button color="primary">Update Name</button>
+            <button routerLink=".." mat-button color="primary"> Back</button>
+        </div>
+        </mat-card-actions>
+    </mat-card>
+</div>

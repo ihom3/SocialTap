@@ -1,51 +1,34 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { IdRouteComponent } from './id-route/id-route.component';
-import { UserNotFoundComponent } from './user-not-found/user-not-found.component';
-import { UpdateNameComponent } from './dashboard/update-name/update-name.component';
-import { UpdateEmailComponent } from './dashboard/update-email/update-email.component';
-import { UpdatePasswordComponent } from './dashboard/update-password/update-password.component';
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import { RegisterCodesComponent } from './dashboard/register-codes/register-codes.component';
-import { AuthGuard } from './auth/auth.guard';
-import { UpdateBioComponent } from './dashboard/update-bio/update-bio.component';
-import { UpdateSocialsComponent } from './dashboard/update-socials/update-socials.component';
-const routes: Routes = [{
-  path: "", component: HomeComponent,
-  
-}, {
-  path: "login", component: LoginComponent
-}, {
-  path: "user-not-found", component: UserNotFoundComponent
-},{
-  path: "dashboard", component: DashboardComponent, canActivate:[AuthGuard], children: [
-    {
-      path: "update-name", component: UpdateNameComponent
-    }, {
-      path: "update-email", component: UpdateEmailComponent
-    },
-    {
-      path: "update-password", component: UpdatePasswordComponent
-    }, {
-      path: "update-bio", component: UpdateBioComponent
-    },
-    {
-      path: "update-socials", component: UpdateSocialsComponent
-    },
-    {
-      path: "register-codes", component: RegisterCodesComponent
-    }
-  ]
-},
- {
-  path: ":id", component: IdRouteComponent
-},
+import { NgModule, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule, Routes } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ActivateCodeComponent } from './components/activate-code/activate-code.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { IdDiscoveryComponent } from './components/id-discovery/id-discovery.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RegisterComponent } from './components/register/register.component';
+import { SocialPageComponent } from './components/social-page/social-page.component';
+import { AuthGuard} from "@auth0/auth0-angular";
+import { UpdateNameComponent } from './component/dashboard/update-name/update-name.component';
+import { UpdateBioComponent } from './component/dashboard/update-bio/update-bio.component';
+import { UpdateSocialsComponent } from './component/dashboard/update-socials/update-socials.component';
+const routes: Routes = [{ path: '', component: HomePageComponent},
+{ path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard]},
+{path: "register", component: RegisterComponent},
+{path: "error", component: PageNotFoundComponent},
+{path: "user", component: SocialPageComponent},
+{path: "activate-code", component: ActivateCodeComponent},
+{path: ":id", component: IdDiscoveryComponent},
+{path: "dashboard/update-name", component: UpdateNameComponent, canActivate: [AuthGuard]},
+{path: "dashboard/update-bio", component: UpdateBioComponent, canActivate: [AuthGuard]},
+{path: "dashboard/update-socials", component: UpdateSocialsComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  constructor() {}
+
+ }
