@@ -21,14 +21,11 @@ export class IdRouteComponent {
     this.http.get(`http://localhost:8000/api/${this.id}`).subscribe((res: any) => {
       if(res.message === "User Not Found") {
         this.router.navigate(["/user-not-found"]);
-      }
-      if(res.message === "User Not Registered") {
+      } else if(res.message === "User Not Registered") {
         this.unregistered = true;
-      }
-      else {
+      } else {
         this.userData = res;
         this.found = true;
-        console.log(this.userData);
       }
     })
   }

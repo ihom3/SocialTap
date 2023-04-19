@@ -9,7 +9,7 @@ import { UserServiceService } from '../user-service.service';
   styleUrls: ['./nav.component.sass']
 })
 export class NavComponent {
-  constructor(public location: Location, private http: HttpClient, private router: Router, public userService: UserServiceService) {
+  constructor(public location: Location, public router: Router, public userService: UserServiceService) {
 
   }
 

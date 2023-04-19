@@ -16,6 +16,8 @@ $my-custom-warn: mat-palette($mat-lime)
 $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn)
 @include angular-material-theme($my-custom-theme)
 
+$accent: mat-color($my-custom-accent)
+
 *
     margin: 0
     padding: 0
@@ -34,4 +36,5 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
     max-width: 90%
     min-height: 73%
     display: grid
-
+.logo
+    fill: $accent
