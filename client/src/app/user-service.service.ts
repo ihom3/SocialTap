@@ -23,7 +23,7 @@ interface User {
   role: string;
   socials: Social[];
 }
-export const serverURL = "http://localhost:8000/api/";
+export const serverURL = "http://127.0.0.1:8000/api/";
 
 @Injectable({
   providedIn: 'root'
