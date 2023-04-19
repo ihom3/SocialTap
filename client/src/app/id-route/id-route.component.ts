@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { serverURL } from '../user-service.service';
 
 @Component({
   selector: 'app-id-route',
@@ -18,7 +19,7 @@ export class IdRouteComponent {
   })
   }
   ngOnInit(): void {
-    this.http.get(`http://localhost:8000/api/${this.id}`).subscribe((res: any) => {
+    this.http.get(serverURL + this.id).subscribe((res: any) => {
       if(res.message === "User Not Found") {
         this.router.navigate(["/user-not-found"]);
       } else if(res.message === "User Not Registered") {

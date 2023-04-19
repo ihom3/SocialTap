@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserServiceService } from '../user-service.service';
+import { UserServiceService, serverURL } from '../user-service.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -21,7 +21,7 @@ export class LoginComponent {
     });
   }
   ngOnInit(): void {
-    this.http.get("http://localhost:8000/api/is-logged-in", { withCredentials: true}).subscribe({
+    this.http.get(serverURL + "is-logged-in", { withCredentials: true}).subscribe({
       next: (v: any) => {
         if(v.status === true) {
           this.router.navigate(["/dashboard"]);

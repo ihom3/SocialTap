@@ -75,7 +75,7 @@ export class UserServiceService {
     })
   }
   login(form: FormGroup): void {
-    this.http.post("http://localhost:8000/api/login", form.getRawValue(), {
+    this.http.post(serverURL + "login", form.getRawValue(), {
       withCredentials: true, responseType: "json"
     }).subscribe({ 
       next: (v: any) => {
@@ -95,7 +95,7 @@ export class UserServiceService {
   logout(): void {
     if(this.isLoggedIn) {
       this.loading = true;
-    this.http.post("http://localhost:8000/api/logout", {}, { withCredentials: true }).subscribe((res: any) => {
+    this.http.post(serverURL + "logout", {}, { withCredentials: true }).subscribe((res: any) => {
       if(res.message === "success") {
         this.isLoggedIn = false;
         this.router.navigate(["/"]);
