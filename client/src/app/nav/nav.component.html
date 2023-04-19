@@ -1,13 +1,21 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
+
     <span>Social Tap</span>
+    <mat-divider [vertical]="true"></mat-divider>
+   
     <span class="flex-auto"></span>
-    <button routerLink="login" *ngIf="this.location.path() != '/login' && !userService.isLoggedIn && !userService.loading" mat-button class="example-icon" aria-label="Example icon-button with heart icon">
-     Login
+   
+     
+
+      <button class="mr-3" mat-button *ngIf="this.location.path() != '/dashboard' && userService.isLoggedIn && !userService.loading" routerLink="dashboard">
+        Dashboard
       </button>
-      <button  mat-button *ngIf="this.location.path() != '/login' && userService.isLoggedIn && !userService.loading" (click)="logout()">
+      <span *ngIf="this.location.path() != '/dashboard' && userService.isLoggedIn && !userService.loading"> | </span>
+      <button  routerLink="login" *ngIf="this.location.path() != '/login' && !userService.isLoggedIn && !userService.loading" mat-button class="example-icon" aria-label="Example icon-button with heart icon">
+        Login
+         </button>
+      <button class="ml-3" mat-button *ngIf="this.location.path() != '/login' && userService.isLoggedIn && !userService.loading" (click)="logout()">
         Logout
       </button>
+      
   </mat-toolbar>

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { serverURL } from '../user-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { fetchIcon } from '../helpers';
+import { fetchIcon, fetchURL } from '../helpers';
 @Component({
   selector: 'app-social-page',
   templateUrl: './social-page.component.html',
@@ -40,5 +40,8 @@ export class SocialPageComponent {
         this.loading = false;
       }
     })
+  }
+  redirect(social: string, url: string) {
+    window.location.href = fetchURL(social,url);
   }
 }

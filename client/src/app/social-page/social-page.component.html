@@ -1,15 +1,15 @@
 <section *ngIf="userData != undefined" class="social-grid">
     <section id="header">
         <img class="outline outline-offset-4  transition-all ease-in hover:brightness-75 hover:outline-2 hover:outline-offset-0 
-        outline-1 outline-gray-400 w-auto h-32 object-cover rounded-full" [src]="profileImg" />
-        <div id="name-bio" class="w-1/2"> 
+        outline-1 outline-gray-400 w-auto h-48 object-cover rounded-full" [src]="profileImg" />
+        <div id="name-bio" class=" pl-2 w-1/2"> 
         <p class="text-2xl">{{userData.first_name + " " + userData.last_name}}</p>
         <mat-divider></mat-divider>
         <p class="pt-3">{{userData.bio}}</p>
     </div>
     </section>
     <section id="socials">
-        <div class="tile" *ngFor="let social of userData.socials" [id]="social.name">
+        <div class="tile hover:cursor-pointer" *ngFor="let social of userData.socials" [id]="social.name" (click)="redirect(social.name, social.link)">
             <fa-icon class="icon fa-3x" [icon]="fetchIcon(social.name)"></fa-icon>
         </div>
     </section>

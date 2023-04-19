@@ -1,23 +1,23 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faDiscord, faFacebook, faGithub, faInstagram, faLinkedin, faSnapchat, faTiktok, faTwitch, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faFacebook, faGithub, faInstagram, faLinkedin, faReddit, faSnapchat, faSoundcloud, faSpotify, faTiktok, faTwitch, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faFilePdf, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
-export const SocialList: string[] = [
-  "Facebook",
-  "Twitter",
-  "Instagram",
-  "LinkedIn",
-  "Snapchat",
-  "TikTok",
-  "YouTube",
-  "Twitch",
-  "Reddit",
-  "GitHub",
-  "Discord",
-  "Spotify",
-  "SoundCloud",
-  "Apple Music",
-]
+  export const SocialList: string[] = [
+    "Facebook",
+    "Twitter",
+    "Instagram",
+    "LinkedIn",
+    "Snapchat",
+    "TikTok",
+    "YouTube",
+    "Twitch",
+    "GitHub",
+    "Spotify",
+    "SoundCloud",
+    "Discord",
+    "Email",
+    "Reddit"
+  ]
 
 export function fetchIcon(name: string): IconDefinition {
     switch(name) {
@@ -31,35 +31,80 @@ export function fetchIcon(name: string): IconDefinition {
         return faInstagram;
       case "Twitter":
         return faTwitter;
-      case "tiktok":
+      case "TikTok":
         return faTiktok;
-      case "youtube":
+      case "YouTube":
         return faYoutube;
-      case "discord":
+      case "Discord":
         return faDiscord;
-      case "twitch":
+      case "Twitch":
         return faTwitch;
-      case "github":
+      case "GitHub":
         return faGithub;
-      case "resume":
-        return faFilePdf;
-      case "email":
+      case "Email":
         return faEnvelope;
+      case "Spotify":
+        return faSpotify;
+      case "SoundCloud":
+        return faSoundcloud;
+      case "Discord":
+        return faDiscord;
+      case "Reddit":
+        return faReddit;
       default:
         return faTimesCircle;
     }
 }
 
+
+
 export function fetchURL(social: string, username: string): string {
-  let tempUrl: string = '';
+  var baseURL = "https://";
   switch(social) {
     case "Facebook":
-      tempUrl = "https://www.facebook.com/";
+      baseURL += "facebook.com/"
+      break;
+    case "Twitter":
+      baseURL += "twitter.com/"
+      break;
+    case "Instagram":
+      baseURL += "instagram.com/"
+      break;
+    case "LinkedIn":
+      baseURL += "linkedin.com/in/"
+      break;
+    case "Snapchat":
+      baseURL += "snapchat.com/add/"
+      break;
+    case "TikTok":
+      baseURL += "tiktok.com/@"
+      break;
+    case "YouTube":
+      baseURL += "youtube.com/@"
+      break;
+    case "Twitch":
+      baseURL += "twitch.tv/"
+      break;
+    case "GitHub":
+      baseURL += "github.com/"
+      break;
+    case "Spotify":
+      baseURL += "open.spotify.com/user/"
+      break;
+    case "SoundCloud":
+      baseURL += "soundcloud.com/"
+      break;
+    case "Email":
+      baseURL = "mailto:";
+      break;
+    case "Reddit":
+      baseURL += "reddit.com/user/";
       break;
     default:
       break;
+
   }
-  tempUrl += username;
-  return tempUrl;
+  baseURL += username;
+  return baseURL;
 
 }

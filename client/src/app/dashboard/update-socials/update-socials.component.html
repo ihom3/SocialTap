@@ -7,7 +7,7 @@
 </mat-card-header>
         <mat-card-content>
             <mat-divider></mat-divider>
-            <section class="place-items-center overflow-y-auto max-h-96 w-100  divide-y grid items-center">
+            <section class="place-items-center overflow-y-auto max-h-96 w-100  divide-y grid items-center overflow-x-hidden">
                 <div class="w-full py-1 max-w-fit" *ngFor="let social of SocialList"> 
                     <div class="grid grid-flow-col items-center ">
                         <fa-icon class="fa-2x icon" [icon]="fetchIcon(social)"></fa-icon>
