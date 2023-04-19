@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent {
-
+  gitHub = (): void  => {
+    window.location.href = 'https://github.com/ihom3/SocialTap';
+  }
 }
