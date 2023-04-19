@@ -1,9 +1,0 @@
-<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-    <button mat-stroked-button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
-      Log out
-    </button>
-  </ng-container>
-
-  <ng-template #loggedOut>
-    <button mat-stroked-button (click)="auth.loginWithRedirect({ appState: { target: '/dashboard' } })">Log in</button>
-  </ng-template>

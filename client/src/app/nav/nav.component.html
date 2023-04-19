@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Social Tap</span>
+    <span class="flex-auto"></span>
+    <button routerLink="login" *ngIf="this.location.path() != '/login' && !userService.isLoggedIn && !userService.loading" mat-button class="example-icon" aria-label="Example icon-button with heart icon">
+     Login
+      </button>
+      <button  mat-button *ngIf="this.location.path() != '/login' && userService.isLoggedIn && !userService.loading" (click)="logout()">
+        Logout
+      </button>
+  </mat-toolbar>

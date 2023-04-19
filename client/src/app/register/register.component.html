@@ -1,0 +1,38 @@
+
+<mat-card  *ngIf="!loading" class="max-w-md text-center">
+  <mat-card-header class=" mb-5">
+    <mat-card-title class="text-3xl">
+        Register
+    </mat-card-title>
+</mat-card-header>
+<mat-card-content class="justify-center">
+  <mat-divider class="pb-5"></mat-divider>
+<form [formGroup]="form" (submit)="submit()">
+    <mat-form-field appearance="outline" class="max-w-sm w-4/5 mb-1">
+      <mat-label>First Name</mat-label>
+      <input matInput type="email" id="firstName" formControlName="first_name"  placeholder="John" required autofocus>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="max-w-sm w-4/5 mb-1">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="email" id="lastName" formControlName="last_name"  placeholder="Doe" required autofocus>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="max-w-sm w-4/5 mb-1">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" id="email" formControlName="email"  placeholder="johndoe@gmail.com" required autofocus>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline" class="max-w-sm w-4/5 mb-1">
+      <mat-label>Password</mat-label>
+      <input matInput type="password"  formControlName="password" id="inputPassword" placeholder="Password" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="max-w-sm w-4/5 mb-1">
+        <mat-label>Password Confirmation</mat-label>
+        <input matInput type="password"  formControlName="passwordConfirmation" id="passwordConfirmation" placeholder="Password" required>
+      </mat-form-field>
+      <mat-divider class="pb-5"></mat-divider>
+    <button type="submit" class="max-w-sm w-4/5 mb-5" [disabled]="disableButton()" mat-raised-button color="primary">Register</button>
+  </form>
+</mat-card-content>
+</mat-card>

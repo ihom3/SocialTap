@@ -1,0 +1,3 @@
+<mat-spinner *ngIf="!unregistered && !found"></mat-spinner>
+<app-register *ngIf="unregistered && !found" [code]="this.id"></app-register>
+<app-social-page *ngIf="!unregistered && found" [userData]="userData"></app-social-page>

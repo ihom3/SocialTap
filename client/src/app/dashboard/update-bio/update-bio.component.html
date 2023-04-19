@@ -1,0 +1,25 @@
+<div *ngIf="!userService.loading && userService.userData != undefined">
+    <mat-card-header class=" mb-5">
+        <mat-card-title class="text-3xl">
+            Update Bio
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="justify-center">
+    <mat-card-subtitle class="text-lg pb-2">
+        <mat-form-field appearance="fill" class="w-full" >
+            <mat-label>Current Bio</mat-label>
+        <textarea matInput disabled placeholder="Lorem Ipsum">{{userService.userData.bio}}</textarea>
+    </mat-form-field>
+    </mat-card-subtitle>
+    <mat-divider class="pb-5"></mat-divider>
+    <form [formGroup]="form" (submit)="submit()">
+    <mat-form-field class="w-full">
+        <mat-label>New Bio</mat-label>
+        <textarea matInput formControlName="bio" placeholder="Lorem Ipsum"></textarea>
+      </mat-form-field>
+      <mat-divider class="pb-5"></mat-divider>
+    <button color="primary" type="submit" [disabled]="disable()" class="max-w-xs w-4/5 mb-5" mat-raised-button>Update Bio</button>
+    </form>
+    <button color="accent" routerLink=".." class="max-w-xs w-4/5 mb-5" mat-raised-button>Back</button>
+    </mat-card-content>
+    </div>
