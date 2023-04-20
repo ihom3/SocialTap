@@ -17,6 +17,9 @@ We also added a navigation bar that conditionally renders buttons for users to n
 Here are a couple screenshots of the components that we implemneted that connect to the user service:
 ![dashboard](https://i.imgur.com/PP2aByO.png)
 
+![userPage](https://i.imgur.com/IziYqlU.png)
+
+![other](https://i.imgur.com/SWqqn8k.png)
 
 ### Unit Tests
 
