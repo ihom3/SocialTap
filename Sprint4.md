@@ -79,6 +79,64 @@ In Sprint 4, a major decision was made on what form of authentication we were go
 ### Backend API Documentation
 [Database Structure, Backend Endpoints & Registration Flow](https://ianblasko.notion.site/Software-Engineering-20eed26e5943404e8d357d40bb23a8e1)
 
+- "/users/{id}" is a GET METHOD that retrieves our USER Struct Data to request a specific user with the corresponding ID as a parameter.
+Example with id=1: 
+GET localhost:9000/users/1
+It gives the user with id=1:
+{
+    "user_email": "ian.n.",
+    "first_name": "Ian",
+    "last_name": "B",
+    "sticker_code": "hello",
+    "bio_text": "hello world",
+    "profile_picture": "1",
+    "social_list": {
+        "facebook": {
+            "name": "Facebook",
+            "status": true,
+            "url": "/ian"
+        },
+        "snapchat": {
+            "name": "",
+            "status": false,
+            "url": ""
+        },
+        "instagram": {
+            "name": "Instagram",
+            "status": true,
+            "url": "/ian"
+        }
+    }
+}
+
+- "/users" is a POST METHOD that allows us to store a USER Struct user into our database.
+POST localhost:9000/users
+{
+    "user_email": "ian.n.",
+    "first_name": "Ian",
+    "last_name": "B",
+    "sticker_code": "hello",
+    "bio_text": "hello world",
+    "profile_picture": "1",
+    "social_list": {
+        "facebook": {
+            "name": "Facebook",
+            "status": true,
+            "url": "/ian"
+        },
+        "snapchat": {
+            "name": "",
+            "status": false,
+            "url": ""
+        },
+        "instagram": {
+            "name": "Instagram",
+            "status": true,
+            "url": "/ian"
+        }
+    }
+}
+
 - "/api/register" is a POST method that checks if the user is unregistered. If they aren't, then you will create the user in the database and remove a code as unregistered.
 - "/api/login" is a POST method that checks if the user is already logged in. It then checks the user provided email and password and checks if the user is able to lock in.
 - "/api/logout" is a POST method that forces a JWT Token to expire and causes the user to be logged out.
