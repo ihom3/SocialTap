@@ -14,7 +14,7 @@ For our project, we decided to develop an application that allows users to share
 
 1. Clone this github repository into a folder
 2. Navigate to the client directory
-3. Execute the following command: `nmp install`
+3. Execute the following command: `npm install`
 5. Wait for Angular to download all required dependencies
 6. Navigate to the server folder
 7. Update 'database/connection.go' with the correct connection string corresponding to your MySQL database and login
