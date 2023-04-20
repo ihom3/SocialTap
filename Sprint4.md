@@ -154,3 +154,6 @@ It gives all users stored, ex. If only two users:
 - "/api/update-password" is a POST method. It updates a specific users password associated with their account.
 - "/api/update-socials" is a PUT method that updates the Social List information in the database.
 - "/api/profile-picture/:id" is a GET method that retrieves a users profile picture that is associated with their sticker code. Else, it's unregistered or it doesn't exist.
+- "/api/reg-user" is a POST method for testing that tests if we are able to register a specific user.
+- "/api/:id" is a GET method that retrieves a user based on the ID passed in through the parameters.
+- "/api/is-logged-in" is a GET method that checks if the JWT isn't expired and if it isn't, we will show the users' page since the JWT isn't expired and that means they are logged in.
