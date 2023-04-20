@@ -10,6 +10,7 @@ import (
 var DB *gorm.DB
 
 func Connect() {
+	// Instead of "rootroot", change to your database password. Instead of social_tap change to your database name.
 	connection, err := gorm.Open(mysql.Open("root:rootroot@/social_tap"), &gorm.Config{})
 
 	if err != nil {
