@@ -10,6 +10,8 @@ In the frontend, we implemented an Angular Service to connect to our Golang back
 We designed and implemented a new home page:
 ![homePage](https://i.imgur.com/iSmBAQt.png)
 
+Other components, such as the dashboard and those used to update a users information connect to the User Service to communicate with the backend. We implemented an AuthGuard that connects to the User Service to prevent Unauthenticated users from accessing routes such as /dashboard as well.
+
 ### Unit Tests
 
 From Sprint 2:
