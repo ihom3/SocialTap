@@ -59,6 +59,7 @@ In Sprint 4, a major decision was made on what form of authentication we were go
 15. TestUpdateName - Updates the name for a test user and checks if the name is properly updated in the database. It checks three scenarios: with proper request, invalid request body, and unauthenticated request.
 16. TestUpdateBio - Updates the bio for a test user and checks if the bio text is properly updated in the database.
 <img width="239" alt="image" src="https://user-images.githubusercontent.com/90483046/233231352-633d7c76-0173-409b-b4d8-f8319b04740c.png">
+
 17. createTestJWT - Creates a JWT Token that will later be received by a User. If the token fails to generate, we return an empty Token String.
 18. TestGetUser - It creates a user along with a JWT token and stores the user inside our database. If the user is not found, it checks first if the wrong user was retrieved, and then checks if no user was found at all.
 19. createFormFileUploadRequest - Creates a new file form field and adds the Users ID to the URL path to specify the specific user.
