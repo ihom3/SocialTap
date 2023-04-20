@@ -12,6 +12,8 @@ We designed and implemented a new home page:
 
 Other components, such as the dashboard and those used to update a users information connect to the User Service to communicate with the backend. We implemented an AuthGuard that connects to the User Service to prevent Unauthenticated users from accessing routes such as /dashboard as well.
 
+We also added a navigation bar that conditionally renders buttons for users to navigate our site based on the page they are currently on and if they are currently logged in or not. 
+
 ### Unit Tests
 
 From Sprint 2:
