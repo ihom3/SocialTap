@@ -14,15 +14,14 @@ For our project, we decided to develop an application that allows users to share
 
 1. Clone this github repository into a folder
 2. Navigate to the client directory
-3. Execute the following command: 
-`ng serve`
+3. Execute the following command: `ng serve`
 5. Wait for Angular to download all required dependencies
 6. Navigate to the server folder
 7. Update 'database/connection.go' with the correct connection string corresponding to your MySQL database and login
-8. Execute the following command: go build
+8. Execute the following command: `go build`
 9. Run the executable generated titled 'backend'
 10. In a seperate terminal, open the client folder
-11. Execute the following command: ng serve --host 0.0.0.0
+11. Execute the following command: `ng serve --host 0.0.0.0`
 12. Make a POST request to /api/reg-user to create a default Administrator user (email: ian@gmail.com, password: password)
 13. Open a browser and navigate to 127.0.0.1:4200/login
 14. Confirm you can login with the Administrator account
