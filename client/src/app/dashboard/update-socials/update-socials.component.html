@@ -15,7 +15,7 @@
                             <mat-label>{{social}}</mat-label>
                             <input matInput [value]="this.getURL(social)" (keyup)="this.updateURL(social, $event)" [placeholder]="social">
                         </mat-form-field>
-                        <mat-slide-toggle color="primary" (change)="this.toggleSocial(social)" [checked]="this.isChecked(social)"></mat-slide-toggle>
+                        <mat-slide-toggle color="primary" id={{social}} (change)="this.toggleSocial(social)" [checked]="this.isChecked(social)"></mat-slide-toggle>
                     </div>
                 </div>
             </section>
