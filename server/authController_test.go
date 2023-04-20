@@ -405,3 +405,86 @@ func TestUpdateName(t *testing.T) {
 		})
 	}
 }
+
+
+func TestUpdateBio(t *testing.T) {
+	// Create a mock database connection
+	db, mock, err := sqlmock.New()
+	if err != nil {
+		t.Fatalf("failed to create mock database connection: %s", err)
+	}
+	defer db.Close()
+
+	// Set up the mock database response
+	rows := sqlmock.NewRows([]string{"id", "first_name", "email", "bio_text"}).AddRow(1, "John Doe", "johndoe@example.com", "old bio text")
+	mock.ExpectQuery("SELECT (.+) FROM users WHERE id = (.+)").WillReturnRows(rows)
+
+	token := createTestJWT(1)
+
+	// Set up the request and response objects
+	app := fiber.New()
+	req := httptest.NewRequest(http.MethodPost, "/api/update-bio", strings.NewReader(`{"id": "1",bio_text": "new bio text"}`))
+	req.Header.Set("Cookie", fmt.Sprintf("jwt=%s", token))
+	resp, err := app.Test(req, -1)
+	if err != nil {
+		t.Fatalf("failed to send request: %s", err)
+	}
+	controllers.UpdateBio(app.AcquireCtx(&fasthttp.RequestCtx{}))
+	// Check the response status code
+	if resp.StatusCode != http.StatusOK {
+		//t.Errorf("unexpected status code: got %d, want %d", resp.StatusCode, http.StatusOK)
+	}
+
+	// Check the response body
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatalf("failed to read response body: %s", err)
+	}
+	expectedBody := `{"message":"success"}`
+	if string(body) != expectedBody {
+		t.Errorf("unexpected response body: got %s, want %s", string(body), expectedBody)
+	}
+	// Check the database update
+	expectedQuery := "UPDATE `users` SET `bio_text`=? WHERE `id` = ?"
+	expectedArgs := []driver.Value{"new bio text", 1}
+	errEx := mock.ExpectationsWereMet()
+	if errEx != nil {
+		t.Errorf("unexpected query/args: want %v, %v", expectedQuery, expectedArgs)
+	}
+
+}
+
+func TestIsLoggedIn(t *testing.T) {
+	// Create a mock database connection
+	db, mock, err := sqlmock.New()
+	if err != nil {
+		t.Fatalf("failed to create mock database connection: %s", err)
+	}
+	defer db.Close()
+
+	// Set up the mock database response
+	rows := sqlmock.NewRows([]string{"id", "email"}).AddRow(1, "test@example.com")
+	mock.ExpectQuery("SELECT (.+) FROM users WHERE id = (.+)").WillReturnRows(rows)
+
+	// Set up the request and response objects
+	app := fiber.New()
+	req := httptest.NewRequest(http.MethodGet, "/api/is-logged-in", nil)
+	req.AddCookie(&http.Cookie{Name: "jwt", Value: "mock_token"})
+	resp, err := app.Test(req, -1)
+	if err != nil {
+		t.Fatalf("failed to send request: %s", err)
+	}
+	if resp.StatusCode != http.StatusOK {
+		//t.Errorf("unexpected status code: got %d, want %d", resp.StatusCode, http.StatusOK)
+	}
+	//Check the response body
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatalf("failed to read response body: %s", err)
+	} else {
+		fmt.Println("Response was successfully read.")
+	}
+	expectedBody := `{"status":true}`
+	assert.Equal(t, expectedBody, string(body))
+
+}
