@@ -21,7 +21,8 @@ From Sprint 3:
 
 8.
  ![preLoginSpecs](https://user-images.githubusercontent.com/67469516/228697184-1659b51e-e104-4c88-a304-4797058f3302.PNG)
-9. 
+
+9.
 ![postLoginSpecs](https://user-images.githubusercontent.com/67469516/228697197-d27e7fea-f237-40c5-8866-fa853cc7339c.PNG)
 
 Sprint 4:
@@ -58,12 +59,12 @@ In Sprint 4, a major decision was made on what form of authentication we were go
 14. TestRegisterNewCode - Checks if the user is of "admin" status and if the code will be properly added in the database.
 15. TestUpdateName - Updates the name for a test user and checks if the name is properly updated in the database. It checks three scenarios: with proper request, invalid request body, and unauthenticated request.
 16. TestUpdateBio - Updates the bio for a test user and checks if the bio text is properly updated in the database.
-<img width="239" alt="image" src="https://user-images.githubusercontent.com/90483046/233231352-633d7c76-0173-409b-b4d8-f8319b04740c.png">
-
 17. createTestJWT - Creates a JWT Token that will later be received by a User. If the token fails to generate, we return an empty Token String.
 18. TestGetUser - It creates a user along with a JWT token and stores the user inside our database. If the user is not found, it checks first if the wrong user was retrieved, and then checks if no user was found at all.
 19. createFormFileUploadRequest - Creates a new file form field and adds the Users ID to the URL path to specify the specific user.
 20. TestIDRoute - checks if a Users ID can be found to retrieve their information from inside the database. It checks if the user is not found and/or if the user is not registered.
+
+<img width="239" alt="image" src="https://user-images.githubusercontent.com/90483046/233231352-633d7c76-0173-409b-b4d8-f8319b04740c.png">
 
 ### Backend API Documentation
 [Database Structure, Backend Endpoints & Registration Flow](https://ianblasko.notion.site/Software-Engineering-20eed26e5943404e8d357d40bb23a8e1)
