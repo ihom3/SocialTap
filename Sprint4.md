@@ -124,6 +124,9 @@ It gives all users stored, ex. If only two users:
     ]
 }}
 
+- "/api/reg-user" is a POST method for testing that tests if we are able to register a specific user.
+- "/api/:id" is a GET method that retrieves a user based on the ID passed in through the parameters.
+- "/api/is-logged-in" is a GET method that checks if the JWT isn't expired and if it isn't, we will show the users' page since the JWT isn't expired and that means they are logged in.
 - "/api/register" is a POST method that checks if the user is unregistered. If they aren't, then you will create the user in the database and remove a code as unregistered.
 - "/api/login" is a POST method that checks if the user is already logged in. It then checks the user provided email and password and checks if the user is able to lock in.
 - "/api/logout" is a POST method that forces a JWT Token to expire and causes the user to be logged out.
