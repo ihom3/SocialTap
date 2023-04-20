@@ -7,10 +7,6 @@
 
 
 ### Unit Tests
-New for Sprint 3:
-
-![preLoginSpecs](https://user-images.githubusercontent.com/67469516/228697184-1659b51e-e104-4c88-a304-4797058f3302.PNG)
-![postLoginSpecs](https://user-images.githubusercontent.com/67469516/228697197-d27e7fea-f237-40c5-8866-fa853cc7339c.PNG)
 
 From Sprint 2:
 1. Test the creation of the SocialProviderService
@@ -21,12 +17,22 @@ From Sprint 2:
 6. Test that the AppCardComponent is created and initialized with a blank title
 7. Test that the general AppComponent is created and functioning
 
+From Sprint 3:
+8. ![preLoginSpecs](https://user-images.githubusercontent.com/67469516/228697184-1659b51e-e104-4c88-a304-4797058f3302.PNG)
+9. ![postLoginSpecs](https://user-images.githubusercontent.com/67469516/228697197-d27e7fea-f237-40c5-8866-fa853cc7339c.PNG)
+
+Sprint 4:
+10.
+11.
+
+
 ## Backend
 
 ### Work Completed
-
+In Sprint 4, a major decision was made on what form of authentication we were going to use. We switched from Auth0 to JWT Authentication. Also, we found it easier to implement JWT authentication using Fiber instead of GorillaMux. Therefore, we had to rewrite our handler functions. For this sprint we completed the endpoints and tested them using the unit test package in go. We also, made a few changes to our database. Instead of having a struct for our list of socials, we switched it to an array of SocialType struct. That array will hold the information about which social platforms and their links the user wants to display on their homepage. The details about the routes are provided in the API documentation section below.
 ### Unit Tests
 
+- SPRINT 2
 1. TestGetUsersStatusCode - It checks the get users function status code and returns true if the code is OK, else it fails.
 2. TestUpdateUserStatusCode - It checks the get users function status code and returns true if the code is OK, else it fails.
 3. TestGetUserByCode - It creates a user and puts in in the test database through the mock server. Then it checks that that is 
@@ -44,12 +50,18 @@ From Sprint 2:
 10. TestDashboard - It checks if the Dashboard method is a GET method.
 11. TestIDRoute - It checks if the IDRoute method is a GET method.
 12. TestGetUserNameByCode - It checks if the user exists or not by using their unique sticker code through a GET method.
+- SPRINT 4
+13. TestGetProfilePicture - It adds a test picture and checks to see if that the one we get back from the request.
+14. TestRegisterNewCode - Checks if the user is of "admin" status and if the code will be properly added in the database.
+15. TestUpdateName - Updates the name for a test user and checks if the name is properly updated in the database. It checks three scenarios: with proper request, invalid request body, and unauthenticated request.
+16. TestUpdateBio - Updates the bio for a test user and checks if the bio text is properly updated in the database.
+<img width="239" alt="image" src="https://user-images.githubusercontent.com/90483046/233231352-633d7c76-0173-409b-b4d8-f8319b04740c.png">
 
 
 ### Backend API Documentation
 [Database Structure, Backend Endpoints & Registration Flow](https://ianblasko.notion.site/Software-Engineering-20eed26e5943404e8d357d40bb23a8e1)
 
-- "/users" is a GET METHOD that retrieves our USER Struct Data to request all users stored in database.
+- "/api/get-user" is a GET METHOD that retrieves our USER Struct Data to request all users stored in database.
 Sample request and response:
 GET localhost:9000/users
 It gives all users stored, ex. If only two users:
@@ -60,48 +72,48 @@ It gives all users stored, ex. If only two users:
     "sticker_code": "hello",
     "bio_text": "hello world",
     "profile_picture": "1",
-    "social_list": {
-        "facebook": {
+    "social_list": [
+        {
             "name": "Facebook",
-            "status": true,
-            "url": "/ian"
+            "active": true,
+            "link": "/ian"
         },
-        "snapchat": {
+        {
             "name": "",
-            "status": false,
-            "url": ""
+            "active": false,
+            "link": ""
         },
-        "instagram": {
+        {
             "name": "Instagram",
-            "status": true,
-            "url": "/ian"
+            "active": true,
+            "link": "/ian"
         }
-    }
+    ]
 },
 {
     "user_email": "apple@ufl.edu",
     "first_name": "Apple",
     "last_name": "B",
-    "sticker_code": "apple",
+    "code": "apple",
     "bio_text": "hello Apple",
     "profile_picture": "3",
-    "social_list": {
-        "facebook": {
+    "social_list": [
+        {
             "name": "Facebook",
-            "status": true,
-            "url": "/ian"
+            "active": true,
+            "link": "/apple"
         },
-        "snapchat": {
-            "name": "Snapchat",
-            "status": true,
-            "url": "apple.instagram/"
+        {
+            "name": "",
+            "active": false,
+            "link": "/apple"
         },
-        "instagram": {
+        {
             "name": "Instagram",
-            "status": true,
-            "url": "/ian"
+            "active": true,
+            "link": "/apple"
         }
-    }
+    ]
 }}
 - "/users/{id}" is a GET METHOD that retrieves our USER Struct Data to request a specific user with the corresponding ID as a parameter.
 Example with id=1: 
