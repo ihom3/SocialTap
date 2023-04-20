@@ -3,7 +3,7 @@
 
 ## Frontend
 ### Work Completed
-
+In Sprint 4, we decided to switch from Auth0 to JWT Authentication, and implemented that accordingly, along with an organization overhaul. We added functionality to be able to edit Name, Bio, and Socials on the frontend from the dashboard. Our home page now includes information about the team and what our app does, with some added buttons for improved navigation. We fully implemented new user registration, and have conditional navigation based on whether the user has administrator privileges. 
 
 
 ### Unit Tests
@@ -26,8 +26,12 @@ From Sprint 3:
 ![postLoginSpecs](https://user-images.githubusercontent.com/67469516/228697197-d27e7fea-f237-40c5-8866-fa853cc7339c.PNG)
 
 Sprint 4:
+
 10.
+![image](https://user-images.githubusercontent.com/67469516/233243268-0169b0cd-c546-4050-9204-d86490f49ff5.png)
+
 11.
+![image](https://user-images.githubusercontent.com/67469516/233243415-241efc0a-4cef-43cc-8eb4-8ca1ca2d90a7.png)
 
 
 ## Backend
@@ -123,18 +127,108 @@ It gives all users stored, ex. If only two users:
         }
     ]
 }}
+- "/users/{id}" is a GET METHOD that retrieves our USER Struct Data to request a specific user with the corresponding ID as a parameter.
+Example with id=1: 
+GET localhost:9000/users/1
+It gives the user with id=1:
+{
+    "user_email": "ian.n.",
+    "first_name": "Ian",
+    "last_name": "B",
+    "sticker_code": "hello",
+    "bio_text": "hello world",
+    "profile_picture": "1",
+    "social_list": {
+        "facebook": {
+            "name": "Facebook",
+            "status": true,
+            "url": "/ian"
+        },
+        "snapchat": {
+            "name": "",
+            "status": false,
+            "url": ""
+        },
+        "instagram": {
+            "name": "Instagram",
+            "status": true,
+            "url": "/ian"
+        }
+    }
+}
 
-- "/api/reg-user" is a POST method for testing that tests if we are able to register a specific user.
-- "/api/:id" is a GET method that retrieves a user based on the ID passed in through the parameters.
-- "/api/is-logged-in" is a GET method that checks if the JWT isn't expired and if it isn't, we will show the users' page since the JWT isn't expired and that means they are logged in.
-- "/api/register" is a POST method that checks if the user is unregistered. If they aren't, then you will create the user in the database and remove a code as unregistered.
-- "/api/login" is a POST method that checks if the user is already logged in. It then checks the user provided email and password and checks if the user is able to lock in.
-- "/api/logout" is a POST method that forces a JWT Token to expire and causes the user to be logged out.
-- "/api/register-code" is a POST method that checks the code can be registered only by an admin user, and it cannot be already registered by another user or unregistered. Overall, this function provides basic authentication and authorization checks and ensures that the code being registered is not already in use.
-- "/api/update-picture" is a POST METHOD that allows for a user to change their profile picture and store it inside our database.
-- "/api/update-bio" is a POST method. It updates a specific users bio.
-- "/api/update-email" is a POST method. It updates a specific users email.
-- "/api/update-name" is a POST method. It updates a specific users first and last name.
-- "/api/update-password" is a POST method. It updates a specific users password associated with their account.
-- "/api/update-socials" is a PUT method that updates the Social List information in the database.
-- "/api/profile-picture/:id" is a GET method that retrieves a users profile picture that is associated with their sticker code. Else, it's unregistered or it doesn't exist.
+- "/users" is a POST METHOD that allows us to store a USER Struct user into our database.
+POST localhost:9000/users
+{
+    "user_email": "ian.n.",
+    "first_name": "Ian",
+    "last_name": "B",
+    "sticker_code": "hello",
+    "bio_text": "hello world",
+    "profile_picture": "1",
+    "social_list": {
+        "facebook": {
+            "name": "Facebook",
+            "status": true,
+            "url": "/ian"
+        },
+        "snapchat": {
+            "name": "",
+            "status": false,
+            "url": ""
+        },
+        "instagram": {
+            "name": "Instagram",
+            "status": true,
+            "url": "/ian"
+        }
+    }
+}
+
+It will respond with: 
+{
+    "user_email": "ian.n.",
+    "first_name": "Ian",
+    "last_name": "B",
+    "sticker_code": "hello",
+    "bio_text": "hello world",
+    "profile_picture": "1",
+    "social_list": {
+        "facebook": {
+            "name": "Facebook",
+            "status": true,
+            "url": "/ian"
+        },
+        "snapchat": {
+            "name": "",
+            "status": false,
+            "url": ""
+        },
+        "instagram": {
+            "name": "Instagram",
+            "status": true,
+            "url": "/ian"
+        }
+    }
+}
+
+- "/users/{id}" is a PUT METHOD that allows us to update a user inside of our database, such as email, name, etc... with ID as parameter.
+PUT localhost:9000/users/{id}
+Will take id as a parameter and update the value the user decided to change. To save space, the request body should look the same as the previous method, and the request will just have the updated value.
+- "/users/{id}" is a DELETE METHOD that allows us to remove a specific user based on the id parameter from inside our database
+DELETE localhost:9000/users/{id}
+Will take id as a parameter and update the value the user decided to change. To save space, the request body should look the same as the previous method.
+Will take id as a parameter and update the value the user decided to change. To save space, the request body should look the same as the previous method. It will return this message if succeded: “The user was deleted successfully.”
+
+- "/users/{id}/instagram" is a GET METHOD that allows us to retrieve a users social media account, in this case specifically Instagram with id passed in as a parameter.
+- "/users/code" is a POST METHOD that allows a user to add a user social to the user specificed.
+- SPRINT 3
+- "/update-profile-picture" is a POST METHOD that allows for a user to change their profile picture and store it inside our database.
+- "/{sticker_code}" is a GET method that checks the unregistered_codes tables first and then the users table. It will return the unregistered code or the user info.
+- "/dashboard/{sticker_code}" is a GET method. It is the first endpoint where the users will be directed. If the user has not been registered, it will create an entry in the database for the user with all the fields being empty.If the user is already registered, it will respond with all the data of the user.
+- "/update-profile" is a POST method. It updates any data we pass in with the json body.
+- "/update-socials/{id}" is a PUT method that updates the Social List information in the database.
+- "/unregistered" is a POST method that adds an unregistered code in the database. It carries the sticker code in the json body.
+- "/unregistered/{sticker_code}" is a DELETE method that deletes the code from the unregistered table, after a user with that code has been created.
+- "/user/{sticker_code}" is a GET method that retrieves a users first and last name that's associated with their sticker code. Else, it's unregistered or it doesn't exist.
+- "/picture/{sticker_code}" is a GET method that retrieves a users profile picture that is associated with their sticker code. Else, it's unregistered or it doesn't exist.
