@@ -5,6 +5,7 @@
 ### Work Completed
 In Sprint 4, we decided to switch from Auth0 to JWT Authentication, and implemented that accordingly, along with an organization overhaul. We added functionality to be able to edit Name, Bio, and Socials on the frontend from the dashboard. Our home page now includes information about the team and what our app does, with some added buttons for improved navigation. We fully implemented new user registration, and have conditional navigation based on whether the user has administrator privileges. 
 
+In the frontend, we implemented an Angular Service to connect to our Golang backend. The angular service has similar functions to those on the backend and it monitors the current status of the user to determine if they’re logged in or not. If they are logged in, the User Service stores the user’s data as well. 
 
 ### Unit Tests
 
