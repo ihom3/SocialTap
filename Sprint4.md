@@ -7,6 +7,9 @@ In Sprint 4, we decided to switch from Auth0 to JWT Authentication, and implemen
 
 In the frontend, we implemented an Angular Service to connect to our Golang backend. The angular service has similar functions to those on the backend and it monitors the current status of the user to determine if they’re logged in or not. If they are logged in, the User Service stores the user’s data as well. 
 
+We designed and implemented a new home page:
+![homePage](https://i.imgur.com/iSmBAQt.png)
+
 ### Unit Tests
 
 From Sprint 2:
