@@ -14,6 +14,10 @@ Other components, such as the dashboard and those used to update a users informa
 
 We also added a navigation bar that conditionally renders buttons for users to navigate our site based on the page they are currently on and if they are currently logged in or not. 
 
+Here are a couple screenshots of the components that we implemneted that connect to the user service:
+![dashboard](https://i.imgur.com/PP2aByO.png)
+
+
 ### Unit Tests
 
 From Sprint 2:
